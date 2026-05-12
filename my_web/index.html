@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+    <meta name="AIGC" content="{&quot;Label&quot;: &quot;1&quot;, &quot;ContentProducer&quot;: &quot;001191330101MA27WPYJ18xliu&quot;, &quot;ProduceID&quot;: &quot;3c805869-082c-4ac9-8642-fd679cb5abc0&quot;, &quot;ReserveCode1&quot;: &quot;iflow&quot;, &quot;ContentPropagator&quot;: &quot;iflow&quot;, &quot;PropagateID&quot;: &quot;iflow&quot;, &quot;ReserveCode2&quot;: &quot;iflow&quot;}">
+<meta content='{"Label": "1", "ContentProducer": "001191330101MA27WPYJ18xliu", "ProduceID": "94690599-d99c-45ec-bf33-ddc6d4591c35", "ReserveCode1": "iflow", "ContentPropagator": "iflow", "PropagateID": "iflow", "ReserveCode2": "iflow"}' name="AIGC"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="归途 - 智能旅游制定平台，为您打造深度文化体验之旅" name="description"/>
+<title>归途 | 智能旅游制定</title>
+<!-- 字体引用 -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.font.im/css?family=DM+Serif+Display:wght@400;500;600;700&amp;family=DM+Sans:wght@300;400;500;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Font Awesome -->
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<!-- Tailwind CSS 4.x -->
+<script src="https://g.alicdn.com/code/lib/tailwindcss-browser/4.1.11/index.global.min.js"></script>
+<!-- Chart.js -->
+<script src="https://g.alicdn.com/code/lib/Chart.js/4.4.1/chart.umd.min.js"></script>
+<!-- Mermaid -->
+<script src="https://g.alicdn.com/code/lib/mermaid/11.5.0/mermaid.min.js"></script>
+<!-- 自定义字体定义（霞鹜文楷） -->
+<style>
+    @font-face {
+      font-family: '霞鹜文楷';
+      src: local('霞鹜文楷 STKaiti'), local('KaiTi');
+      font-display: swap;
+    }
+  </style>
+<style>
+    /* 全局样式 */
+    :root {
+      --color-primary: #EA580C;
+      --color-primary-dark: #C2410C;
+      --color-primary-light: #FDBA74;
+      --color-dark: #1C1917;
+      --color-dark-light: #292524;
+      --color-light: #F9F7F2;
+      --color-white: #FFFFFF;
+      --color-gray: #A8A29E;
+      --color-gray-light: #E7E5E4;
+      --color-gray-dark: #78716C;
+      --gradient-primary: linear-gradient(135deg, #EA580C 0%, #FDBA74 100%);
+      --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      --gradient-light: linear-gradient(135deg, #F9F7F2 0%, #FFFFFF 100%);
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --border-radius-sm: 0.5rem;
+      --border-radius-md: 0.75rem;
+      --border-radius-lg: 1rem;
+      --border-radius-xl: 1.5rem;
+      --border-radius-2xl: 2rem;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
+    }
+    
+    body {
+      font-family: 'DM Sans', '思源黑体', 'Noto Sans SC', sans-serif;
+      color: var(--color-dark);
+      background-color: var(--color-light);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    .font-serif-en {
+      font-family: 'DM Serif Display', serif;
+    }
+    
+    .font-serif-cn {
+      font-family: '霞鹜文楷', 'STKaiti', serif;
+    }
+    
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* 滚动动画 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    
+    .animate-slide-in-right {
+      animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    .animation-trigger {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .animation-trigger.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* 卡片悬浮效果 */
+    .card-hover {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .card-hover:hover img {
+      transform: scale(1.1);
+    }
+    
+    .card-hover img {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* 链接下划线动画 */
+    .link-underline {
+      position: relative;
+      text-decoration: none;
+    }
+    
+    .link-underline::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+    
+    .link-underline:hover::after {
+      width: 100%;
+    }
+    
+    /* 自定义滚动条 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--color-light);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-gray);
+      border-radius: 4px;
+      transition: background var(--transition-fast);
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-gray-dark);
+    }
+    
+    /* 侧边栏导航样式 */
+    .sidebar-nav {
+      position: sticky;
+      top: 6rem;
+      height: calc(100vh - 8rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-gray) var(--color-light);
+    }
+    
+    /* 选中状态的导航项 */
+    .nav-item-active {
+      color: var(--color-primary) !important;
+      font-weight: 500;
+      border-left: 3px solid var(--color-primary);
+      background-color: rgba(234, 88, 12, 0.05);
+    }
+    
+    /* 导航链接动画 */
+    .nav-link {
+      position: relative;
+      transition: all var(--transition-normal);
+    }
+    
+    .nav-link:hover {
+      color: var(--color-primary);
+      transform: translateX(4px);
+    }
+    
+    /* 按钮样式 */
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius-lg);
+      font-weight: 500;
+      transition: all var(--transition-normal);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius-lg);
+      font-weight: 500;
+      transition: all var(--transition-normal);
+      border: 1px solid var(--color-gray-light);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--color-white);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* 卡片样式 */
+    .card {
+      background: var(--color-white);
+      border-radius: var(--border-radius-xl);
+      border: 1px solid var(--color-gray-light);
+      transition: all var(--transition-normal);
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    
+    /* 背景渐变 */
+    .bg-gradient-primary {
+      background: var(--gradient-primary);
+    }
+    
+    .bg-gradient-dark {
+      background: var(--gradient-dark);
+    }
+    
+    .bg-gradient-light {
+      background: var(--gradient-light);
+    }
+    
+    /* 文本渐变 */
+    .text-gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: var(--gradient-primary);
+    }
+    
+    /* 毛玻璃效果 */
+    .backdrop-blur {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .sidebar-nav {
+        position: static;
+        height: auto;
+        overflow-y: visible;
+      }
+      
+      .animation-trigger {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+    <meta name="description" content="心流是一款AI助手，帮助你高效获取知识，无论是日常娱乐生活百科还是专业学术论文知识，都可以轻松解答，让你快速进入心流状态，让知识随心流动！">
+    <meta name="keywords" content="Iflow,flow,心流,大语言模型,自然语言处理,人工智能大模型,AI聊天机器人,AI聊天,AI创作,AI聊天,AI助手,高效写作,AI搜索,AI问答,论文检索,AI论文阅读,沉静式阅读">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="归途 | 智能旅游制定 · 心流AI助手 | 让知识随心流动">
+    <meta property="og:site_name" content="心流AI助手"/>
+    <meta property="og:url" content="http://cloud.iflow.cn/sites/Z0FBQUFBQnA1Y3FvdkxBczdEUlJicFFidE9uR3lXcUV1UUdBbnZhaHozX0hVaW5vMGFmUFVsQjlYSU84d196ZkctWHVUTDVUenFnYThyZmc2U3RNNWJDMnMxMUR4MGJIMkwxVU50MFhoYTkzeVhqRC03MlVuclVvWFhScEdsZFB0aWF2TndVemZFOGo">
+    <meta property="og:description" content="归途 | 智能旅游制定">
+    <meta property="og:image" content="https://img.alicdn.com/imgextra/i4/O1CN01VFxaDc1s3EZKig0PM_!!6000000005710-0-tps-300-300.jpg">
+    <link rel="shortcut icon" type="image/png" href="https://img.alicdn.com/imgextra/i4/O1CN01yBfg3x1iNi4YggwIt_!!6000000004401-2-tps-72-72.png">
+    <link rel="icon" type="image/png" href="https://img.alicdn.com/imgextra/i4/O1CN01yBfg3x1iNi4YggwIt_!!6000000004401-2-tps-72-72.png"/>
+    <style>.flowchart{margin:'0 auto'}</style>
+    <meta name="aplus-core" content="aplus.js" />
+
+<script>
+  (function(w, d, s, q) {
+    w[q] = w[q] || [];
+    var f = d.getElementsByTagName(s)[0],j = d.createElement(s);
+    j.async = true;
+    j.id = 'beacon-aplus';
+    j.setAttribute('exparams','aplus&sidx=aplusSidex&ckx=aplusCkx');
+    j.src = "//g.alicdn.com/alilog/mlog/aplus_v2.js";
+    j.crossorigin = 'anonymous';
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'aplus_queue');
+</script>
+<script src="//g.alicdn.com/aes/??tracker/3.3.13/index.js,tracker-plugin-pv/3.0.6/index.js,tracker-plugin-event/3.0.0/index.js,tracker-plugin-jserror/3.0.3/index.js,tracker-plugin-resourceError/3.0.4/index.js,tracker-plugin-perf/3.1.2/index.js,tracker-plugin-eventTiming/3.0.0/index.js"></script>
+<script>
+const aes = new AES({
+  pid: "QNxFeG",
+  user_type: "101",
+  uid: "",
+  username: ""
+});
+const plugins = aes.use([AESPluginPV,AESPluginEvent,AESPluginJSError,AESPluginResourceError,AESPluginPerf,AESPluginEventTiming])
+</script>
+    
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const btnEle = document.getElementById('jump_to_index');
+        if (navigator?.userAgent && navigator?.userAgent?.includes('XinLiuApp')) {
+          btnEle.style.display = 'none';
+        }
+        
+        // 滚动动画
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+            }
+          });
+        }, observerOptions);
+        
+        // 观察所有需要动画的元素
+        document.querySelectorAll('.animation-trigger').forEach(el => {
+          observer.observe(el);
+        });
+        
+        // 移动端菜单
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+              
+              // 关闭移动端菜单
+              if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+              }
+            }
+          });
+        });
+        
+        // 导航栏滚动效果
+        const nav = document.querySelector('nav');
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', function() {
+          const currentScrollY = window.scrollY;
+          
+          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // 向下滚动
+            nav.style.transform = 'translateY(-100%)';
+          } else {
+            // 向上滚动
+            nav.style.transform = 'translateY(0)';
+          }
+          
+          lastScrollY = currentScrollY;
+        });
+      });
+    </script>
+</head>
+<body class="text-[#1C1917] bg-[#F9F7F2]">
+<!-- 顶部导航栏 -->
+<nav class="sticky top-0 bg-[#F9F7F2]/95 backdrop-blur-md border-b border-[#E7E5E4] z-50 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<!-- Logo -->
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 bg-[#EA580C] rounded-full flex items-center justify-center">
+<i class="fas fa-compass text-white text-lg"></i>
+</div>
+<span class="font-serif-en text-2xl font-semibold text-[#1C1917]">归途</span>
+</div>
+<!-- 桌面端导航菜单 -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="nav-link text-[#1C1917] hover:text-[#EA580C] transition-colors duration-300 font-medium text-sm" href="#section-intelligent-planning">智能规划</a>
+<a class="nav-link text-[#1C1917] hover:text-[#EA580C] transition-colors duration-300 font-medium text-sm" href="#section-resource-booking">资源预订</a>
+<a class="nav-link text-[#1C1917] hover:text-[#EA580C] transition-colors duration-300 font-medium text-sm" href="#section-data-insights">数据洞察</a>
+<a class="nav-link text-[#1C1917] hover:text-[#EA580C] transition-colors duration-300 font-medium text-sm" href="#section-accessibility">无障碍服务</a>
+<a class="nav-link text-[#1C1917] hover:text-[#EA580C] transition-colors duration-300 font-medium text-sm" href="#section-cultural-experience">文化体验</a>
+<a class="nav-link text-[#1C1917] hover:text-[#EA580C] transition-colors duration-300 font-medium text-sm" href="#section-community">社区协作</a>
+</div>
+<!-- 移动端菜单按钮 -->
+<button class="md:hidden p-2 rounded-lg hover:bg-[#E7E5E4] transition-colors" id="mobile-menu-btn">
+<i class="fas fa-bars text-xl text-[#1C1917]"></i>
+</button>
+</div>
+</div>
+<!-- 移动端菜单 -->
+<div class="hidden md:hidden bg-[#F9F7F2] border-t border-[#E7E5E4]" id="mobile-menu">
+<div class="px-4 py-4 space-y-3">
+<a class="block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917] transition-colors" href="#section-intelligent-planning">智能规划</a>
+<a class="block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917] transition-colors" href="#section-resource-booking">资源预订</a>
+<a class="block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917] transition-colors" href="#section-data-insights">数据洞察</a>
+<a class="block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917] transition-colors" href="#section-accessibility">无障碍服务</a>
+<a class="block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917] transition-colors" href="#section-cultural-experience">文化体验</a>
+<a class="block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917] transition-colors" href="#section-community">社区协作</a>
+</div>
+</div>
+</nav>
+<!-- 主体内容区 -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- 左侧边栏 (20%) -->
+<aside class="w-full lg:w-1/5 lg:pt-8">
+<div class="sidebar-nav hidden lg:block">
+<h3 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-6 pb-3 border-b border-[#E7E5E4]">快速导航</h3>
+<nav class="space-y-2">
+<a class="nav-link block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917]/80 hover:text-[#EA580C] transition-all duration-300 text-sm" href="#section-intelligent-planning">
+<i class="fas fa-route mr-2"></i>智能规划
+            </a>
+<a class="nav-link block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917]/80 hover:text-[#EA580C] transition-all duration-300 text-sm" href="#section-resource-booking">
+<i class="fas fa-hotel mr-2"></i>资源预订
+            </a>
+<a class="nav-link block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917]/80 hover:text-[#EA580C] transition-all duration-300 text-sm" href="#section-data-insights">
+<i class="fas fa-chart-line mr-2"></i>数据洞察
+            </a>
+<a class="nav-link block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917]/80 hover:text-[#EA580C] transition-all duration-300 text-sm" href="#section-accessibility">
+<i class="fas fa-wheelchair mr-2"></i>无障碍服务
+            </a>
+<a class="nav-link block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917]/80 hover:text-[#EA580C] transition-all duration-300 text-sm" href="#section-cultural-experience">
+<i class="fas fa-landmark mr-2"></i>文化体验
+            </a>
+<a class="nav-link block py-2 px-4 rounded-lg hover:bg-[#E7E5E4] text-[#1C1917]/80 hover:text-[#EA580C] transition-all duration-300 text-sm" href="#section-community">
+<i class="fas fa-users mr-2"></i>社区协作
+            </a>
+</nav>
+<a href="https://www.pitravel.cn/" class="mt-8 p-4 bg-white rounded-xl border border-[#E7E5E4] block hover:shadow-md transition-all duration-300">
+<h4 class="font-serif-cn text-sm font-semibold text-[#1C1917] mb-2">快速开始</h4>
+<p class="text-xs text-[#44403C] leading-relaxed">输入您的旅行偏好，AI将为您生成个性化行程方案</p>
+</a>
+</div>
+</aside>
+<!-- 右侧内容区 (80%) -->
+<main class="w-full lg:w-4/5 lg:pl-8">
+<!-- Hero Section -->
+<section class="relative rounded-3xl overflow-hidden mb-12 shadow-2xl">
+<!-- 背景图片 -->
+<div class="absolute inset-0">
+<img alt="壮丽的山川风光" class="w-full h-full object-cover" src="./images/hero-background.jpg"/>
+<!-- 渐变遮罩 -->
+<div class="absolute inset-0 bg-gradient-to-r from-[#1C1917]/85 via-[#1C1917]/60 to-transparent"></div>
+</div>
+<!-- Hero 内容 -->
+<div class="relative z-10 px-8 md:px-16 py-20 md:py-32 lg:py-40">
+<div class="max-w-3xl">
+<!-- 标签 -->
+<div class="inline-flex items-center px-4 py-2 bg-[#EA580C]/20 rounded-full mb-6 backdrop-blur-sm">
+<i class="fas fa-sparkles text-[#EA580C] mr-2"></i>
+<span class="text-[#FAFAF9] text-sm font-medium">AI驱动的智能旅行规划</span>
+</div>
+<!-- 主标题 -->
+<h1 class="font-serif-en text-4xl md:text-6xl lg:text-7xl font-bold text-[#FAFAF9] leading-tight mb-6">
+                发现世界的<br/>
+<span class="text-[#EA580C]">另一种可能</span>
+</h1>
+<!-- 副标题 -->
+<p class="font-serif-cn text-xl md:text-2xl text-[#D6D3D1] mb-8 leading-relaxed">
+                每一段旅程，都是一次灵魂的归途
+              </p>
+<!-- 引言 -->
+<p class="text-[#A8A29E] text-lg mb-10 leading-relaxed max-w-2xl">
+                我们不只是为您规划路线，而是为您创造深度的文化体验。从壮丽的山川到古老的城市，从舌尖的美味到心灵的触动，让每一次出发都成为难忘的记忆。
+              </p>
+<!-- CTA 按钮 -->
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="http://localhost:8501" class="bg-[#EA580C] hover:bg-[#C2410C] text-white px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 flex items-center justify-center">
+              <i class="fas fa-magic mr-2"></i>
+              开始规划您的旅程
+            </a>
+            <a href="https://www.xiaohongshu.com/discovery/item/6862615c0000000020018894?source=webshare&xhsshare=pc_web&xsec_token=ABQgrUY4NHzsJqW2JC3ogcFM_YLiWwfmYludg_q9NuXss=&xsec_source=pc_share" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 hover:border-white/50 px-8 py-4 rounded-full font-medium transition-all duration-300 backdrop-blur-sm flex items-center justify-center">
+              <i class="fas fa-play-circle mr-2"></i>
+              带你身临其境
+            </a>
+</div>
+</div>
+</div>
+<!-- 底部装饰 -->
+<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F9F7F2] to-transparent"></div>
+</section>
+<!-- Section 1: 智能行程规划与定制 -->
+<section class="py-16 md:py-24 animation-trigger bg-[#F9F7F2]" id="section-intelligent-planning" style="opacity: 1 !important; visibility: visible !important;">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center mb-16">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-[#EA580C] rounded-2xl mb-6 shadow-lg">
+<i class="fas fa-brain text-white text-2xl"></i>
+</div>
+<h2 class="font-serif-cn text-4xl md:text-5xl font-bold text-[#1C1917] mb-6">智能行程规划与定制</h2>
+<p class="text-lg md:text-xl text-[#44403C] max-w-3xl mx-auto leading-relaxed">
+        融合人工智能与社交大数据，为您打造独一无二的深度旅行体验。从灵感捕捉到细节落地，每一步都由AI精心算计<sup class="citation" title="arXiv: 06_技术实现与最佳实践.md"><a href="https://arxiv.org/abs/06_技术实现与最佳实践.md" target="_blank">[06_技术实现与最佳实践.md]</a></sup>。
+      </p>
+</div>
+<!-- Feature 1: Social Link Parsing -->
+<div class="mb-24">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="order-2 lg:order-1" style="opacity: 1 !important;">
+<div class="relative rounded-2xl overflow-hidden shadow-xl border border-[#E7E5E4]">
+<img alt="社交平台解析支持" class="w-full h-auto object-cover" src="images/social-link-parser.jpg"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm">
+<span class="text-sm font-medium text-[#1C1917]">支持28+主流平台</span>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2" style="opacity: 1 !important;">
+<h3 class="font-serif-cn text-3xl font-semibold text-[#1C1917] mb-6">社交链接智能解析</h3>
+<p class="text-[#44403C] leading-relaxed mb-8">
+            告别繁琐的攻略整理。只需粘贴分享链接，系统即可智能识别并提取结构化信息，构建您的专属行程模板<sup class="citation" title="arXiv: 04_社交链接解析界面设计.md"><a href="https://arxiv.org/abs/04_社交链接解析界面设计.md" target="_blank">[04_社交链接解析界面设计.md]</a></sup>。
+          </p>
+<div class="space-y-6">
+<!-- Platform 1 -->
+<div class="flex items-start">
+<div class="flex-shrink-0 w-12 h-12 bg-[#FB7299]/10 rounded-xl flex items-center justify-center mr-4">
+<i class="fab fa-bilibili text-[#FB7299] text-xl"></i>
+</div>
+<div>
+<h4 class="font-semibold text-[#1C1917] mb-1">哔哩哔哩深度解析</h4>
+<p class="text-sm text-[#44403C]">提取视频标题、弹幕评论及UP主信息，识别目的地与避雷提醒。</p>
+</div>
+</div>
+<!-- Platform 2 -->
+<div class="flex items-start">
+<div class="flex-shrink-0 w-12 h-12 bg-[#000000]/5 rounded-xl flex items-center justify-center mr-4">
+<i class="fab fa-tiktok text-black text-xl"></i>
+</div>
+<div>
+<h4 class="font-semibold text-[#1C1917] mb-1">抖音热门挖掘</h4>
+<p class="text-sm text-[#44403C]">分析短视频内容与热门标签，生成景点打卡点和美食推荐。</p>
+</div>
+</div>
+<!-- Platform 3 -->
+<div class="flex items-start">
+<div class="flex-shrink-0 w-12 h-12 bg-[#FF2442]/10 rounded-xl flex items-center justify-center mr-4">
+<i class="fab fa-instagram text-[#FF2442] text-xl"></i>
+</div>
+<div>
+<h4 class="font-semibold text-[#1C1917] mb-1">小红书攻略提取</h4>
+<p class="text-sm text-[#44403C]">解析图文笔记与避雷指南，构建详细的行程模板与注意事项。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature 2: User Personas -->
+<div class="mb-24 bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-[#E7E5E4]">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
+<div>
+<h3 class="font-serif-cn text-3xl font-semibold text-[#1C1917] mb-2">基于画像的精准推荐</h3>
+<p class="text-[#A8A29E]">多维度用户画像分析，实现行程与偏好的完美匹配<sup class="citation" title="arXiv: 03_智能推荐卡片设计分析.md"><a href="https://arxiv.org/abs/03_智能推荐卡片设计分析.md" target="_blank">[03_智能推荐卡片设计分析.md]</a></sup></p>
+</div>
+<div class="mt-4 md:mt-0">
+<img alt="推荐卡片示例" class="w-48 h-32 object-cover rounded-xl shadow-md" src="images/travel-recommendation-card.jpg"/>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Age Dimension -->
+<div class="bg-[#F9F7F2] rounded-2xl p-6 hover:shadow-md transition-shadow duration-300" style="opacity: 1 !important;">
+<div class="w-10 h-10 bg-[#EA580C] rounded-full flex items-center justify-center mb-4">
+<i class="fas fa-users text-white text-sm"></i>
+</div>
+<h4 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-4">年龄标签系统</h4>
+<ul class="space-y-3">
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-backpacker mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>青年(18-25)：</strong>背包客、预算友好型</span>
+</li>
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-briefcase mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>成年(26-45)：</strong>家庭友好、舒适平衡</span>
+</li>
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-landmark mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>中年(46-65)：</strong>文化深度游、高端定制</span>
+</li>
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-heart-pulse mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>银发(65岁+)：</strong>慢节奏、健康关怀</span>
+</li>
+</ul>
+</div>
+<!-- Budget Dimension -->
+<div class="bg-[#F9F7F2] rounded-2xl p-6 hover:shadow-md transition-shadow duration-300" style="opacity: 1 !important;">
+<div class="w-10 h-10 bg-[#EA580C] rounded-full flex items-center justify-center mb-4">
+<i class="fas fa-wallet text-white text-sm"></i>
+</div>
+<h4 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-4">价格区间匹配</h4>
+<ul class="space-y-3">
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-piggy-bank mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>经济型(¥0-500)：</strong>青旅、公共交通</span>
+</li>
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-bed mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>舒适型(¥500-1500)：</strong>三星酒店、包车</span>
+</li>
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-concierge-bell mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>豪华型(¥1500-5000)：</strong>五星酒店、私导</span>
+</li>
+<li class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-crown mr-2 text-[#EA580C]" style="width: 16px;"></i>
+<span><strong>顶级(¥5000+)：</strong>专机、管家服务</span>
+</li>
+</ul>
+</div>
+<!-- Interest Dimension -->
+<div class="bg-[#F9F7F2] rounded-2xl p-6 hover:shadow-md transition-shadow duration-300" style="opacity: 1 !important;">
+<div class="w-10 h-10 bg-[#EA580C] rounded-full flex items-center justify-center mb-4">
+<i class="fas fa-heart text-white text-sm"></i>
+</div>
+<h4 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-4">兴趣偏好分析</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white rounded-full text-xs text-[#1C1917] border border-[#E7E5E4]">自然风光</span>
+<span class="px-3 py-1 bg-white rounded-full text-xs text-[#1C1917] border border-[#E7E5E4]">文化历史</span>
+<span class="px-3 py-1 bg-white rounded-full text-xs text-[#1C1917] border border-[#E7E5E4]">美食探索</span>
+<span class="px-3 py-1 bg-white rounded-full text-xs text-[#1C1917] border border-[#E7E5E4]">冒险运动</span>
+<span class="px-3 py-1 bg-white rounded-full text-xs text-[#1C1917] border border-[#E7E5E4]">购物娱乐</span>
+</div>
+<div class="mt-4 p-3 bg-white rounded-lg border border-[#E7E5E4]">
+<p class="text-xs text-[#44403C] leading-relaxed">
+               采用混合推荐策略，综合预算、年龄、兴趣、时间和拥挤度计算匹配分值，确保推荐精准度。
+             </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature 3: Visualization -->
+<div class="mb-24">
+<div class="grid lg:grid-cols-2 gap-12 items-start">
+<div style="opacity: 1 !important;">
+<h3 class="font-serif-cn text-3xl font-semibold text-[#1C1917] mb-6">多维可视化概览</h3>
+<p class="text-[#44403C] leading-relaxed mb-8">
+            拒绝枯燥的列表，提供沉浸式的行程预览体验。系统支持时间轴、地图、网格三种视图，全方位掌握行程细节<sup class="citation" title="arXiv: 05_行程可视化概览设计.md"><a href="https://arxiv.org/abs/05_行程可视化概览设计.md" target="_blank">[05_行程可视化概览设计.md]</a></sup>。
+          </p>
+<div class="space-y-6">
+<!-- Timeline View -->
+<div class="flex">
+<div class="flex-shrink-0 w-8 flex flex-col items-center mr-4">
+<div class="w-3 h-3 bg-[#EA580C] rounded-full mt-2"></div>
+<div class="w-0.5 h-full bg-[#E7E5E4] mt-2"></div>
+</div>
+<div class="pb-8">
+<h4 class="text-lg font-semibold text-[#1C1917]">时间轴视图</h4>
+<p class="text-sm text-[#44403C] mt-1">水平与垂直双轴展示，支持拖拽调整时间顺序，一键优化路线，直观感受行程节奏。</p>
+</div>
+</div>
+<!-- Map View -->
+<div class="flex">
+<div class="flex-shrink-0 w-8 flex flex-col items-center mr-4">
+<div class="w-3 h-3 bg-[#1C1917] rounded-full mt-2"></div>
+<div class="w-0.5 h-full bg-[#E7E5E4] mt-2"></div>
+</div>
+<div class="pb-8">
+<h4 class="text-lg font-semibold text-[#1C1917]">智能地图可视化</h4>
+<p class="text-sm text-[#44403C] mt-1">不同颜色标注交通方式，图层控制显示景点、餐饮、住宿，支持缩放与交互查看。</p>
+</div>
+</div>
+<!-- Data Charts -->
+<div class="flex">
+<div class="flex-shrink-0 w-8 flex flex-col items-center mr-4">
+<div class="w-3 h-3 bg-[#A8A29E] rounded-full mt-2"></div>
+</div>
+<div>
+<h4 class="text-lg font-semibold text-[#1C1917]">数据可视化图表</h4>
+<p class="text-sm text-[#44403C] mt-1">预算分析饼图、拥挤度热力图、价格波动趋势，用数据辅助决策，平衡各项支出。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative" style="opacity: 1 !important;">
+<div class="absolute -top-4 -left-4 w-full h-full border-2 border-[#EA580C] rounded-2xl"></div>
+<img alt="智能规划界面展示" class="relative w-full rounded-xl shadow-2xl object-cover" src="images/intelligent-planning-interface.jpg"/>
+</div>
+</div>
+</div>
+<!-- Operational Guide -->
+<div class="mb-24">
+<h3 class="font-serif-cn text-3xl font-semibold text-[#1C1917] mb-10 text-center">三步生成您的专属行程</h3>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#E7E5E4] relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300" style="opacity: 1 !important;">
+<div class="absolute top-0 right-0 w-24 h-24 bg-[#EA580C]/5 rounded-bl-full -mr-4 -mt-4 transition-all group-hover:bg-[#EA580C]/10"></div>
+<div class="w-12 h-12 bg-[#EA580C] text-white rounded-xl flex items-center justify-center text-xl font-serif-en font-bold mb-6">1</div>
+<h4 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-3">链接解析生成</h4>
+<p class="text-sm text-[#44403C] leading-relaxed mb-4">
+            粘贴1-3个旅游分享链接（支持B站、抖音、小红书），点击生成，AI自动提取信息并构建行程模板。
+          </p>
+<ul class="text-xs text-[#A8A29E] space-y-2">
+<li class="flex items-center"><i class="fas fa-check text-[#059669] mr-2"></i>包含避雷提醒</li>
+<li class="flex items-center"><i class="fas fa-check text-[#059669] mr-2"></i>智能优化路线</li>
+</ul>
+</div>
+<!-- Step 2 -->
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#E7E5E4] relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300" style="opacity: 1 !important;">
+<div class="absolute top-0 right-0 w-24 h-24 bg-[#EA580C]/5 rounded-bl-full -mr-4 -mt-4 transition-all group-hover:bg-[#EA580C]/10"></div>
+<div class="w-12 h-12 bg-[#1C1917] text-white rounded-xl flex items-center justify-center text-xl font-serif-en font-bold mb-6">2</div>
+<h4 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-3">个性化调整</h4>
+<p class="text-sm text-[#44403C] leading-relaxed mb-4">
+            查看匹配度评分，拖拽调整行程顺序，修改活动时长，点击替换查看AI推荐的替代方案。
+          </p>
+<ul class="text-xs text-[#A8A29E] space-y-2">
+<li class="flex items-center"><i class="fas fa-check text-[#059669] mr-2"></i>拖拽排序</li>
+<li class="flex items-center"><i class="fas fa-check text-[#059669] mr-2"></i>智能替换</li>
+</ul>
+</div>
+<!-- Step 3 -->
+<div class="bg-white rounded-2xl p-8 shadow-sm border border-[#E7E5E4] relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300" style="opacity: 1 !important;">
+<div class="absolute top-0 right-0 w-24 h-24 bg-[#EA580C]/5 rounded-bl-full -mr-4 -mt-4 transition-all group-hover:bg-[#EA580C]/10"></div>
+<div class="w-12 h-12 bg-[#EA580C] text-white rounded-xl flex items-center justify-center text-xl font-serif-en font-bold mb-6">3</div>
+<h4 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-3">可视化预览</h4>
+<p class="text-sm text-[#44403C] leading-relaxed mb-4">
+            切换时间轴和地图视图，检查路线合理性，查看拥挤度热力图避开高峰，一键优化最终方案。
+          </p>
+<ul class="text-xs text-[#A8A29E] space-y-2">
+<li class="flex items-center"><i class="fas fa-check text-[#059669] mr-2"></i>多视图切换</li>
+<li class="flex items-center"><i class="fas fa-check text-[#059669] mr-2"></i>一键导出</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Case Study: Comparison -->
+<div class="mb-24 bg-[#1C1917] rounded-3xl p-8 md:p-12 text-[#FAFAF9] shadow-2xl">
+<div class="flex items-center justify-between mb-10">
+<h3 class="font-serif-cn text-3xl font-semibold text-white">案例：京都7日深度游</h3>
+<span class="px-4 py-2 bg-[#EA580C] rounded-full text-sm font-medium text-white">匹配度 92%</span>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Traditional -->
+<div class="bg-[#292524] rounded-2xl p-6 border border-[#44403C]" style="opacity: 1 !important;">
+<h4 class="font-serif-cn text-xl text-[#A8A29E] mb-6 flex items-center">
+<i class="fas fa-book-open mr-3"></i>传统规划方式
+          </h4>
+<ul class="space-y-4 text-sm">
+<li class="flex items-start">
+<i class="fas fa-clock text-[#78716C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-[#FAFAF9]">耗时：</strong>3-5天研究攻略</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-layer-group text-[#78716C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-[#FAFAF9]">信息源：</strong>分散的网站和攻略</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-exclamation-triangle text-[#78716C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-[#FAFAF9]">避雷：</strong>依赖零散用户评价</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-times-circle text-[#78716C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-[#FAFAF9]">结果：</strong>可能遗漏亮点，路线未优化</span>
+</li>
+</ul>
+</div>
+<!-- Smart -->
+<div class="bg-[#EA580C]/10 rounded-2xl p-6 border border-[#EA580C]/30 relative overflow-hidden" style="opacity: 1 !important;">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<i class="fas fa-robot text-6xl text-white"></i>
+</div>
+<h4 class="font-serif-cn text-xl text-[#EA580C] mb-6 flex items-center relative z-10">
+<i class="fas fa-magic mr-3"></i>智能规划系统
+          </h4>
+<ul class="space-y-4 text-sm relative z-10">
+<li class="flex items-start">
+<i class="fas fa-bolt text-[#EA580C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-white">耗时：</strong>10分钟 (3链接解析+5分钟调整)</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-database text-[#EA580C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-white">信息源：</strong>整合300+用户分享内容</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-shield-alt text-[#EA580C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-white">避雷：</strong>自动识别12个避雷点</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-[#EA580C] mt-1 mr-3" style="width: 16px;"></i>
+<span><strong class="text-white">结果：</strong>8个必游+3个隐藏打卡+5家餐厅</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-[#44403C]">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+<div>
+<div class="text-3xl font-serif-en font-bold text-[#EA580C] mb-1">90%</div>
+<div class="text-xs text-[#A8A29E]">时间节省</div>
+</div>
+<div>
+<div class="text-3xl font-serif-en font-bold text-[#EA580C] mb-1">300%</div>
+<div class="text-xs text-[#A8A29E]">信息全面度</div>
+</div>
+<div>
+<div class="text-3xl font-serif-en font-bold text-[#EA580C] mb-1">500%</div>
+<div class="text-xs text-[#A8A29E]">避雷准确性</div>
+</div>
+<div>
+<div class="text-3xl font-serif-en font-bold text-[#EA580C] mb-1">40%</div>
+<div class="text-xs text-[#A8A29E]">路线优化度</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pitfall Avoidance Feature -->
+<div class="bg-[#FEF2F2] rounded-2xl p-8 border border-[#FECACA] flex flex-col md:flex-row items-start md:items-center" style="opacity: 1 !important;">
+<div class="flex-shrink-0 w-16 h-16 bg-[#DC2626] rounded-full flex items-center justify-center mr-6 mb-4 md:mb-0">
+<i class="fas fa-exclamation-triangle text-white text-2xl"></i>
+</div>
+<div class="flex-1">
+<h3 class="font-serif-cn text-2xl font-semibold text-[#991B1B] mb-2">智能避雷识别系统</h3>
+<p class="text-[#7F1D1D] leading-relaxed">
+          基于NLP技术，系统自动识别"避雷"、"踩坑"等负面关键词，分析内容时效性与价格合理性。智能标注警告图标，详细说明问题来源，助您轻松规避旅游陷阱<sup class="citation" title="arXiv: 04_社交链接解析界面设计.md"><a href="https://arxiv.org/abs/04_社交链接解析界面设计.md" target="_blank">[04_社交链接解析界面设计.md]</a></sup>。
+        </p>
+</div>
+</div>
+</div>
+</section><section class="py-16 md:py-24 animation-trigger" id="section-resource-booking" style="opacity: 1 !important; visibility: visible !important;">
+<div class="bg-white rounded-2xl p-8 md:p-12 border border-[#E7E5E4] shadow-sm" style="opacity: 1 !important;">
+<!-- 标题区 -->
+<div class="flex items-center mb-10" style="opacity: 1 !important;">
+<div class="w-14 h-14 bg-[#EA580C]/10 rounded-xl flex items-center justify-center mr-5 shrink-0">
+<i class="fas fa-calendar-check text-[#EA580C] text-2xl"></i>
+</div>
+<div>
+<h2 class="font-serif-cn text-3xl md:text-4xl font-semibold text-[#1C1917]">核心资源预订与后勤</h2>
+<p class="text-[#A8A29E] text-base mt-2 font-medium">一站式旅行资源管理，让预订变得简单高效</p>
+</div>
+</div>
+<!-- 引言：一站式价值 -->
+<div class="mb-12">
+<p class="text-[#44403C] text-lg leading-relaxed mb-6">
+        旅行资源预订是整个旅行规划中最关键、最耗时的环节。研究表明，平均每位旅行者需要访问4-6个不同平台来完成交通、住宿、景点门票和美食预订<sup class="citation" title="Food delivery app design: part 1 - analysis - Mobivery: – Each restaurant shows the logo, postal code, name, rating, type of food, price range and deal if i"><a href="https://mobivery.com/en/food-delivery-app-design-part-1-analysis/" target="_blank">[475]</a></sup>。我们的一站式预订系统通过深度整合，为您解决信息错位、价格不一致和行程冲突的痛点。
+      </p>
+<!-- 核心优势卡片组 -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-[#F9F7F2] rounded-xl p-6 border border-[#E7E5E4] hover:border-[#EA580C]/30 transition-colors duration-300" style="opacity: 1 !important;">
+<div class="w-10 h-10 bg-[#EA580C]/10 rounded-lg flex items-center justify-center mb-4">
+<i class="fas fa-stopwatch text-[#EA580C]"></i>
+</div>
+<h3 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-2">效率提升</h3>
+<p class="text-sm text-[#44403C] leading-relaxed">集中管理所有预订信息，平均节省<span class="text-[#EA580C] font-bold">60%</span>的预订时间</p>
+</div>
+<div class="bg-[#F9F7F2] rounded-xl p-6 border border-[#E7E5E4] hover:border-[#EA580C]/30 transition-colors duration-300" style="opacity: 1 !important;">
+<div class="w-10 h-10 bg-[#EA580C]/10 rounded-lg flex items-center justify-center mb-4">
+<i class="fas fa-tags text-[#EA580C]"></i>
+</div>
+<h3 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-2">价格透明</h3>
+<p class="text-sm text-[#44403C] leading-relaxed">实时比价系统确保获得最优价格，拒绝隐形消费</p>
+</div>
+<div class="bg-[#F9F7F2] rounded-xl p-6 border border-[#E7E5E4] hover:border-[#EA580C]/30 transition-colors duration-300" style="opacity: 1 !important;">
+<div class="w-10 h-10 bg-[#EA580C]/10 rounded-lg flex items-center justify-center mb-4">
+<i class="fas fa-project-diagram text-[#EA580C]"></i>
+</div>
+<h3 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-2">行程协同</h3>
+<p class="text-sm text-[#44403C] leading-relaxed">各资源间的关联性自动匹配，智能避免时间与空间冲突</p>
+</div>
+<div class="bg-[#F9F7F2] rounded-xl p-6 border border-[#E7E5E4] hover:border-[#EA580C]/30 transition-colors duration-300" style="opacity: 1 !important;">
+<div class="w-10 h-10 bg-[#EA580C]/10 rounded-lg flex items-center justify-center mb-4">
+<i class="fas fa-shield-alt text-[#EA580C]"></i>
+</div>
+<h3 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-2">售后保障</h3>
+<p class="text-sm text-[#44403C] leading-relaxed">统一的客服体系和退改政策，全程无忧出行</p>
+</div>
+</div>
+</div>
+<!-- 智能预订卡片设计展示 -->
+<div class="mb-12">
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917] mb-6 flex items-center">
+<span style="width: 4px; height: 24px; background-color: #EA580C; display: inline-block; margin-right: 12px; border-radius: 2px;"></span>
+        智能预订卡片展示
+      </h3>
+<p class="text-[#44403C] mb-8 leading-relaxed">
+        我们的预订卡片基于深度用户体验研究设计，遵循"信息分层、视觉聚焦、快速决策"的原则，整合多平台评分与实时评价，助您做出最优选择<sup class="citation" title="Consumer Trust Analysis of Reviews, Ratings and Facility Information on the Booking Decision Process of Hotel Traveloka: In the coming year, it is estimated that holiday activities will continue to be part of the lifestyl"><a href="https://www.semanticscholar.org/paper/34e2173a9236bc9920d0acbdfaf254e04174a556" target="_blank">[488]</a></sup><sup class="citation" title="Rating Analysis of Service Quality, Comfort, Cleanliness, Food and Location of Hotels in DIY to Customer Satisfaction in Hotel Customers in Traveloka: The objective of this research is to determine the quality of hotel service, comfort, cleanliness, f"><a href="https://www.semanticscholar.org/paper/eb46a4e515f4b6c0c4da9841a7c9a0ccca4a2897" target="_blank">[492]</a></sup>。
+      </p>
+<!-- 卡片网格 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- 航班卡片 -->
+        <a href="https://www.ly.com/flights/home" class="rounded-2xl overflow-hidden border border-[#E7E5E4] shadow-sm hover:shadow-xl transition-all duration-500 card-hover bg-white group block" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden relative">
+<img alt="飞机航班" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/flight-card.jpg" style="opacity: 1 !important;"/>
+<div class="absolute top-4 left-4 bg-[#EA580C] text-white text-xs font-medium px-3 py-1 rounded-full">直飞推荐</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-serif-cn text-xl font-bold text-[#1C1917]">北京 - 东京</h4>
+<p class="text-sm text-[#A8A29E] mt-1">中国国航 CA183 · 波音787-9</p>
+</div>
+<div class="text-right">
+<span class="text-2xl font-bold text-[#EA580C]">¥3,200</span>
+<p class="text-xs text-[#A8A29E]">含税起</p>
+</div>
+</div>
+<div class="flex items-center text-sm text-[#44403C] border-t border-[#E7E5E4] pt-4 mt-4 space-x-4">
+<span class="flex items-center" style="opacity: 1 !important;">
+<i class="fas fa-clock text-[#EA580C] mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>3h 15m
+              </span>
+<span class="flex items-center" style="opacity: 1 !important;">
+<i class="fas fa-utensils text-[#EA580C] mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>含餐食
+              </span>
+<span class="flex items-center" style="opacity: 1 !important;">
+<i class="fas fa-suitcase-rolling text-[#EA580C] mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>23kg行李
+              </span>
+</div>
+</div>
+</a>
+<!-- 酒店卡片 -->
+<a href="https://www.ly.com/hotel" class="rounded-2xl overflow-hidden border border-[#E7E5E4] shadow-sm hover:shadow-xl transition-all duration-500 card-hover bg-white group block" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden relative">
+<img alt="豪华酒店" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/hotel-card.jpg" style="opacity: 1 !important;"/>
+<div class="absolute top-4 left-4 bg-[#059669] text-white text-xs font-medium px-3 py-1 rounded-full">高分推荐</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-serif-cn text-xl font-bold text-[#1C1917]">京都四季酒店</h4>
+<p class="text-sm text-[#A8A29E] mt-1">京都府 · 市中心商业区</p>
+</div>
+<div class="bg-[#1C1917] text-white px-3 py-1 rounded-lg text-center">
+<span class="block text-lg font-bold leading-none">4.9</span>
+<span class="block text-xs opacity-70">评分</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 text-xs text-[#44403C] border-t border-[#E7E5E4] pt-4 mt-4">
+<div class="text-center">
+<div class="font-semibold text-[#1C1917]">清洁度</div>
+<div class="text-[#EA580C]">5.0</div>
+</div>
+<div class="text-center border-l border-[#E7E5E4]">
+<div class="font-semibold text-[#1C1917]">服务</div>
+<div class="text-[#EA580C]">4.9</div>
+</div>
+<div class="text-center border-l border-[#E7E5E4]">
+<div class="font-semibold text-[#1C1917]">位置</div>
+<div class="text-[#EA580C]">4.8</div>
+</div>
+</div>
+</div>
+</a>
+<!-- 景点卡片 -->
+<a href="https://www.ly.com/scenery/" class="rounded-2xl overflow-hidden border border-[#E7E5E4] shadow-sm hover:shadow-xl transition-all duration-500 card-hover bg-white group block" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden relative">
+<img alt="故宫景点" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/attraction-card.jpg" style="opacity: 1 !important;"/>
+<div class="absolute top-4 left-4 bg-[#1C1917] text-white text-xs font-medium px-3 py-1 rounded-full flex items-center">
+<i class="fas fa-fire mr-1"></i>必游景点
+            </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-serif-cn text-xl font-bold text-[#1C1917]">故宫博物院</h4>
+<p class="text-sm text-[#A8A29E] mt-1">北京市东城区 · 世界文化遗产</p>
+</div>
+<div class="text-right">
+<span class="text-lg font-bold text-[#EA580C]">¥60</span>
+<p class="text-xs text-[#A8A29E]">大门票</p>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm text-[#44403C] border-t border-[#E7E5E4] pt-4 mt-4">
+<div class="flex items-center">
+<i class="fas fa-history text-[#A8A29E] mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span>建议游览: 3-4小时</span>
+</div>
+<div class="flex items-center text-[#EA580C] text-xs font-medium">
+<i class="fas fa-clock mr-1"></i>08:30 开放
+              </div>
+</div>
+</div>
+</a>
+<!-- 美食卡片 -->
+<a href="https://www.dianping.com/" class="rounded-2xl overflow-hidden border border-[#E7E5E4] shadow-sm hover:shadow-xl transition-all duration-500 card-hover bg-white group block" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden relative">
+<img alt="北京烤鸭" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="images/food-card.jpg" style="opacity: 1 !important;"/>
+<div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-[#1C1917] text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+              必吃榜 Top 1
+            </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="font-serif-cn text-xl font-bold text-[#1C1917]">全聚德·前门店</h4>
+<p class="text-sm text-[#A8A29E] mt-1">京菜 · 烤鸭 · 老字号</p>
+</div>
+<div class="text-right">
+<span class="text-lg font-bold text-[#1C1917]">¥268</span>
+<p class="text-xs text-[#A8A29E]">人均消费</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 border-t border-[#E7E5E4] pt-4 mt-4">
+<span class="px-2 py-1 bg-[#F9F7F2] text-[#44403C] text-xs rounded">招牌烤鸭</span>
+<span class="px-2 py-1 bg-[#F9F7F2] text-[#44403C] text-xs rounded">需提前预约</span>
+<span class="px-2 py-1 bg-[#EA580C]/10 text-[#EA580C] text-xs rounded">网红打卡</span>
+</div>
+</div>
+</div>
+</div>
+</a>
+<!-- 社交整合与信任 -->
+<div class="bg-[#F9F7F2] rounded-2xl p-8 mb-12" style="opacity: 1 !important;">
+<div class="flex flex-col md:flex-row items-start gap-8">
+<div class="md:w-1/3">
+<a href="https://www.douyin.com/jingxuan" class="flex items-center mb-4">
+            <i class="fab fa-weixin text-[#EA580C] text-2xl mr-3"></i>
+            <h3 class="font-serif-cn text-xl font-bold text-[#1C1917]">社交媒体 UGC 整合</h3>
+          </a>
+<p class="text-sm text-[#44403C] leading-relaxed">
+            整合小红书、抖音、哔哩哔哩等主流平台的真实用户内容，多平台评分聚合，提供最真实的决策参考<sup class="citation" title="justinmahar/react-social-media-embed: Easily embed ... - GitHub: React Social Media Embed Easily embed social media posts from Facebook, Instagram, LinkedIn, Pintere"><a href="https://github.com/justinmahar/react-social-media-embed/" target="_blank">[610]</a></sup><sup class="citation" title="How to Integrate Social Media Into Your Website in 2026 (+7 ...: Link your chosen social media accounts to your Curator feed. Platforms supported include Instagram, "><a href="https://curator.io/blog/integrate-social-media-into-website" target="_blank">[613]</a></sup>。
+          </p>
+</div>
+<div class="md:w-2/3">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white p-4 rounded-xl border border-[#E7E5E4]">
+<div class="text-[#EA580C] font-bold text-lg mb-1">4.8/5.0</div>
+<div class="text-xs text-[#A8A29E] mb-2">综合评分聚合</div>
+<div class="flex space-x-1">
+<i class="fab fa-redbook text-red-500"></i>
+<i class="fab fa-tiktok text-black"></i>
+<i class="fas fa-globe text-blue-500"></i>
+</div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-[#E7E5E4]">
+<div class="text-[#059669] font-bold text-lg mb-1">安全避雷</div>
+<div class="text-xs text-[#A8A29E] mb-2">负面评价预警</div>
+<div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-[#059669]" style="width: 25%;"></div>
+</div>
+<div class="text-right text-xs text-[#44403C] mt-1">风险指数低</div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-[#E7E5E4]">
+<div class="text-[#1C1917] font-bold text-lg mb-1">真实体验</div>
+<div class="text-xs text-[#A8A29E] mb-2">12,000+ 条评价</div>
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-gray-300 border-2 border-white"></div>
+<div class="w-6 h-6 rounded-full bg-gray-400 border-2 border-white"></div>
+<div class="w-6 h-6 rounded-full bg-gray-500 border-2 border-white flex items-center justify-center text-[8px] text-white font-bold">+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 高级功能列表 -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div style="opacity: 1 !important;">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-lg bg-[#1C1917] flex items-center justify-center mr-3">
+<i class="fas fa-layer-group text-white text-sm"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">批量预订</h4>
+</div>
+<p class="text-sm text-[#44403C] leading-relaxed">
+          支持同时预订多个资源，系统自动检查时间冲突并提供最优路线建议。
+        </p>
+</div>
+<div style="opacity: 1 !important;">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-lg bg-[#1C1917] flex items-center justify-center mr-3">
+<i class="fas fa-users text-white text-sm"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">团体服务</h4>
+</div>
+<p class="text-sm text-[#44403C] leading-relaxed">
+          专属团体折扣、一对一客服服务、灵活改签政策，满足多人出行需求。
+        </p>
+</div>
+<div style="opacity: 1 !important;">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 rounded-lg bg-[#1C1917] flex items-center justify-center mr-3">
+<i class="fas fa-universal-access text-white text-sm"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">无障碍预订</h4>
+</div>
+<p class="text-sm text-[#44403C] leading-relaxed">
+          全站支持屏幕阅读器、键盘导航优化、高对比度模式，服务每一位旅行者。
+        </p>
+</div>
+</div>
+</div>
+</section><section class="py-16 md:py-24 animation-trigger" id="section-data-insights" style="opacity: 1 !important; visibility: visible !important;">
+<div class="bg-white rounded-2xl p-8 md:p-12 border border-[#E7E5E4] shadow-sm" style="opacity: 1 !important;">
+<!-- Section Header -->
+<div class="flex items-center mb-8">
+<div class="w-12 h-12 bg-[#EA580C]/10 rounded-xl flex items-center justify-center mr-4">
+<i class="fas fa-chart-pie text-[#EA580C] text-xl"></i>
+</div>
+<div>
+<h2 class="font-serif-cn text-3xl font-semibold text-[#1C1917]">数据洞察与趋势分析</h2>
+<p class="text-[#A8A29E] text-sm mt-1">基于数据的智能决策支持</p>
+</div>
+</div>
+<!-- Overview -->
+<div class="mb-12">
+<p class="text-[#44403C] leading-relaxed text-lg">
+        数据洞察与趋势分析模块是"归途"智能旅游平台的核心竞争力所在，通过整合多维度的旅游数据，为用户提供精准的决策支持。本模块包含三大核心功能：价格波动趋势分析、景点拥挤度实时监控、以及预算数据分析与优化。基于大数据和机器学习算法，我们将复杂的数据转化为直观的可视化图表，帮助旅行者优化出行时间、控制旅行成本、提升旅行体验<sup class="citation" title="携程旅游数据分析工具有哪些 - 帆软: 五、携程专属数据分析工具携程作为国内领先的在线旅行服务平台，也开发了自己的数据分析工具，帮助企业进行旅游数据的深入分析。携程的数据分析工具主要功能包括用户行为分析、订单数据分析、市场趋势分析等。。通过"><a href="https://www.fanruan.com/blog/article/112600/" target="_blank">[89]</a></sup><sup class="citation" title="GitHub星标最多的Spark数据分析项目：旅游上榜景点数据可视化系统 ...: 前端则采用Vue与ElementUI实现用户交互界面，并借助Echarts强大的图表渲染能力，将复杂的分析结果以直观的可视化形式呈现。系统功能涵盖了从宏观到微观的多维度分析，包括全国热门旅游城市排名、"><a href="https://juejin.cn/post/7571846248719958016" target="_blank">[95]</a></sup>。
+      </p>
+</div>
+<!-- Main Grid: Price Trends & Crowd Monitoring -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
+<!-- Price Trend Analysis -->
+<div class="space-y-6">
+<a href="https://flights.ctrip.com/online/list/oneway-wuh-cgo" class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-chart-line text-[#EA580C] text-xl"></i>
+            <h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917]">价格波动趋势分析</h3>
+          </a>
+<p class="text-[#44403C] leading-relaxed">
+          价格波动趋势图能够全面展示旅游产品价格随时间变化的规律，帮助用户抓住最佳预订时机。通过对历史数据的深度分析，系统识别出价格波动的周期性特征、季节性规律和突发性变化，为用户提供科学的出行时间建议<sup class="citation" title="携程旅游数据分析工具有哪些 - 帆软: 五、携程专属数据分析工具携程作为国内领先的在线旅行服务平台，也开发了自己的数据分析工具，帮助企业进行旅游数据的深入分析。携程的数据分析工具主要功能包括用户行为分析、订单数据分析、市场趋势分析等。。通过"><a href="https://www.fanruan.com/blog/article/112600/" target="_blank">[89]</a></sup>。
+        </p>
+<!-- Image -->
+<div class="rounded-xl overflow-hidden shadow-md border border-[#E7E5E4]" style="opacity: 1 !important;">
+<img alt="价格趋势图表示例" class="w-full h-auto hover:scale-105 transition-transform duration-700 ease-in-out" src="images/price-trend-chart.jpg"/>
+</div>
+<!-- Case Studies -->
+<div class="bg-[#F9F7F2] rounded-xl p-6 space-y-4">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">实践应用案例</h4>
+<div class="flex items-start space-x-3">
+<i class="fas fa-hotel text-[#EA580C] mt-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<div>
+<span class="font-semibold text-[#1C1917]">酒店价格优化：</span>
+<span class="text-[#44403C]">工作日价格比周末低30%-40%，提前30天预订可节省20%费用。</span>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="fas fa-plane text-[#EA580C] mt-1" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<div>
+<span class="font-semibold text-[#1C1917]">机票价格预测：</span>
+<span class="text-[#44403C]">周二至周四价格最低，提前2-3个月预订可获得最佳价格。</span>
+</div>
+</div>
+</div>
+<!-- Advanced Features -->
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-[#EA580C]/10 text-[#EA580C] rounded-full text-sm font-medium">多时间范围分析</span>
+<span class="px-3 py-1 bg-[#EA580C]/10 text-[#EA580C] rounded-full text-sm font-medium">多产品对比</span>
+<span class="px-3 py-1 bg-[#EA580C]/10 text-[#EA580C] rounded-full text-sm font-medium">智能价格预警</span>
+</div>
+</div>
+<!-- Crowd Monitoring -->
+<div class="space-y-6">
+<a href="https://map.baidu.com/" class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-users text-[#EA580C] text-xl"></i>
+            <h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917]">景点拥挤度实时监控</h3>
+          </a>
+<p class="text-[#44403C] leading-relaxed">
+          通过整合摄像头、传感器、票务系统等多种数据源，构建全方位的景区客流感知网络。系统通过图像识别和大数据分析，实时计算各区域游客数量，并通过热力图直观展示，帮助游客避开高峰<sup class="citation" title="数据动态大屏在旅游行业？提升服务质量 - 帆软报表: 例如，当某个景点出现人满为患的情况时，管理者可以通过动态大屏实时监控游客流量，采取相应措施，避免安全事故的发生。
+
+这种实时监控和数据分析的能力，使得旅游管理者能够更好地掌握旅游资源的使用情况，及时调"><a href="https://www.finereport.com/blog/article/6875fd28d2527e0eb745bdd7" target="_blank">[118]</a></sup><sup class="citation" title="智慧景区3D建模可视化综合管理系统：开启景区管理新时代 - 三维展示: **二、可视化管理：数据驱动的决策支持**
+
+该系统的可视化功能是其核心亮点之一。它将景区的各类数据，如游客流量、设施运行状态、环境监测数据等，与3D模型深度融合。通过直观的图形界面，管理者可以实时了"><a href="https://www.bibibubu.com/article-2982.html" target="_blank">[126]</a></sup>。
+        </p>
+<!-- Image -->
+<div class="rounded-xl overflow-hidden shadow-md border border-[#E7E5E4]" style="opacity: 1 !important;">
+<img alt="景点拥挤度热力图" class="w-full h-auto hover:scale-105 transition-transform duration-700 ease-in-out" src="images/crowd-heatmap.jpg"/>
+</div>
+<!-- Crowd Levels -->
+<div class="space-y-3">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">拥挤度等级与策略</h4>
+<div class="flex items-center justify-between p-3 bg-white border border-[#E7E5E4] rounded-lg">
+<div class="flex items-center space-x-3">
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+<span class="text-[#1C1917] font-medium">舒适 (&lt;50%)</span>
+</div>
+<span class="text-[#A8A29E] text-sm">推荐慢节奏深度游</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white border border-[#E7E5E4] rounded-lg">
+<div class="flex items-center space-x-3">
+<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+<span class="text-[#1C1917] font-medium">正常 (50%-70%)</span>
+</div>
+<span class="text-[#A8A29E] text-sm">可安排常规行程</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white border border-[#E7E5E4] rounded-lg">
+<div class="flex items-center space-x-3">
+<div class="w-3 h-3 rounded-full bg-orange-500"></div>
+<span class="text-[#1C1917] font-medium">拥挤 (70%-90%)</span>
+</div>
+<span class="text-[#A8A29E] text-sm">建议调整顺序/错峰</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white border border-[#E7E5E4] rounded-lg">
+<div class="flex items-center space-x-3">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<span class="text-[#1C1917] font-medium">严重拥挤 (&gt;90%)</span>
+</div>
+<span class="text-[#A8A29E] text-sm">暂缓游览或选择替代</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Budget Analysis Section (Full Width) -->
+<div class="pb-12 border-b border-[#E7E5E4]">
+<div class="flex items-center space-x-3 mb-6">
+<i class="fas fa-wallet text-[#EA580C] text-xl"></i>
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917]">预算数据分析与优化</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 space-y-6">
+<p class="text-[#44403C] leading-relaxed">
+            旅游预算数据分析模块旨在帮助旅行者建立科学的预算管理体系，通过可视化图表清晰展示资金流向，识别支出盲点，避免超支陷阱<sup class="citation" title="Travel Spend – 旅行记账本- App Store: TravelSpend 是记录旅行支出最简单、最精美的方式。无论您是独自背包旅行、情侣度蜜月，还是朋友团队出游——TravelSpend 帮您在任何地方完美掌控预算。
+。轻松掌控预算
+————————"><a href="https://apps.apple.com/cn/app/travel-spend-%E6%97%85%E8%A1%8C%E8%AE%B0%E8%B4%A6%E6%9C%AC/id6761303975" target="_blank">[250]</a></sup><sup class="citation" title="免费旅行行程模板| 可定制的旅行计划表，带预算跟踪功能 - Kuse: **预算分配可视化**
+
+除了原始数字之外，预算分配图还以视觉分解的形式呈现您的支出。此环形图显示分配给不同类别的比例，从而立即清楚地了解您的资金去向。许多旅行者发现他们过度分配给一个区域，而忽略了另"><a href="https://www.kuse.ai/zh-cn/template/travel-itinerary-template" target="_blank">[253]</a></sup>。系统提供智能分析，为用户提供个性化的预算优化建议。
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-[#F9F7F2] p-4 rounded-xl">
+<div class="w-8 h-8 bg-[#EA580C]/10 rounded-lg flex items-center justify-center mb-3">
+<i class="fas fa-chart-pie text-[#EA580C]"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-2">支出结构可视化</h4>
+<p class="text-[#A8A29E] text-sm">环形图直观展示各类支出占比，快速识别主要支出类别。</p>
+</div>
+<div class="bg-[#F9F7F2] p-4 rounded-xl">
+<div class="w-8 h-8 bg-[#EA580C]/10 rounded-lg flex items-center justify-center mb-3">
+<i class="fas fa-circle-notch text-[#EA580C]"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-2">动态预算追踪</h4>
+<p class="text-[#A8A29E] text-sm">颜色编码实时反馈预算使用率，防止不知不觉超支。</p>
+</div>
+<div class="bg-[#F9F7F2] p-4 rounded-xl">
+<div class="w-8 h-8 bg-[#EA580C]/10 rounded-lg flex items-center justify-center mb-3">
+<i class="fas fa-lightbulb text-[#EA580C]"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-2">智能优化建议</h4>
+<p class="text-[#A8A29E] text-sm">识别过度分配，发现节省机会，提供个性化消费提醒。</p>
+</div>
+</div>
+<div class="space-y-3">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">高级功能特性</h4>
+<ul class="text-[#44403C] space-y-2">
+<li class="flex items-start">
+<i class="fas fa-check text-[#EA580C] mt-1 mr-2" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong>多人协作预算管理：</strong>支持团队共享账户，自动计算分摊金额，方便团队旅行费用管理。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#EA580C] mt-1 mr-2" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong>预算模板快速设置：</strong>提供亲子游、自助游、商务游等多种模板，一键应用。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#EA580C] mt-1 mr-2" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong>智能预算预测：</strong>基于行程安排和历史数据预测总支出，超支前提供调整方案。</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Dashboard Image -->
+<div class="lg:col-span-1">
+<div class="rounded-xl overflow-hidden shadow-md border border-[#E7E5E4] h-full" style="opacity: 1 !important;">
+<img alt="数据可视化仪表盘概览" class="w-full h-full object-cover min-h-[300px]" src="images/data-insights-dashboard.jpg"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Grid: Design Principles & Learning -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
+<!-- Design Principles -->
+<div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4">数据可视化设计原则</h4>
+<p class="text-[#44403C] leading-relaxed mb-4">
+          我们的数据可视化设计严格遵循Anthropic的设计哲学，强调清晰、克制、信息密度高。采用柔和的色彩系统，避免过度装饰，确保信息的可读性和可访问性。
+        </p>
+<div class="flex flex-wrap gap-2 text-sm text-[#44403C]">
+<span class="flex items-center"><i class="fas fa-palette text-[#EA580C] mr-2"></i>WCAG AA级对比度</span>
+<span class="flex items-center"><i class="fas fa-universal-access text-[#EA580C] mr-2"></i>屏幕阅读器支持</span>
+<span class="flex items-center"><i class="fas fa-keyboard text-[#EA580C] mr-2"></i>完整键盘导航</span>
+</div>
+</div>
+<!-- Advanced Learning -->
+<div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4">进阶学习方向</h4>
+<ul class="text-[#44403C] space-y-2 text-sm">
+<li class="flex items-start">
+<i class="fas fa-arrow-right text-[#A8A29E] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span>掌握时序数据分析方法（移动平均、ARIMA）</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-arrow-right text-[#A8A29E] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span>学习机器学习预测模型提升价格预测准确性</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-arrow-right text-[#A8A29E] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span>深入理解旅游行业定价策略与用户行为分析</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section class="py-16 md:py-24 animation-trigger bg-[#F9F7F2]" id="section-accessibility" style="opacity: 1 !important; visibility: visible !important;">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center mb-12">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-[#EA580C]/10 rounded-2xl mb-6">
+<i class="fas fa-hand-holding-heart text-[#EA580C] text-3xl"></i>
+</div>
+<h2 class="font-serif-cn text-3xl md:text-4xl font-semibold text-[#1C1917] mb-4">全方位无障碍与关怀服务</h2>
+<p class="text-[#44403C] text-lg max-w-2xl mx-auto">
+        构建包容、温暖、无障碍的旅游环境，让每一位旅行者都能平等、便利、舒适地享受旅程<sup class="citation" title="关于城市轨道交通车站“无障碍”设计的意见: 本文对我国快速城市轨道交通车站的“无障碍”设计提出了除考虑残疾人外应全面考虑老年人、孕妇、带有幼儿的及其他出行有某些障碍的人。“无障碍”设计应为所有弱出行者服务。日本是当今城市轨道交通“无障碍”设施方"><a href="https://www.semanticscholar.org/paper/d94fe7b7eaaee2879905dfe0fe519d8a15dbf7f7" target="_blank">[39]</a></sup><sup class="citation" title="《无障碍设施施工验收及维护规范》（GB50642—2011）的解读: 住房和城乡建设部首次发布了国家标准《无障碍设施施工验收及维护规范》（GB50642—2011），该规范共分4章7个附录，主要内容包括总则、术语、无障碍设施的施工验收、无障碍设施的维护等。该规范较好地解"><a href="https://www.semanticscholar.org/paper/bfe3d8f209ff1e1569dbafd6a16bc5814a0b91e0" target="_blank">[40]</a></sup>。
+      </p>
+</div>
+<!-- Vision Card -->
+<div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-[#E7E5E4] mb-10 text-center" style="opacity: 1 !important;">
+<blockquote class="font-serif-cn text-xl md:text-2xl text-[#1C1917] italic leading-relaxed mb-6">
+        "旅游就是旅游，哪分什么有障碍和无障碍的。我们想要的是一个所有人都可以使用的产品。无障碍其实不是一种服务，而是一种环境。"<sup class="citation" title="纪寻: 无障碍旅游|一席演讲: 在2013年我第一次去巴黎的时候，遇见了一位在当地生活的美国的罕见病病童的母亲，她的名字叫做劳拉。劳拉有一个坐着轮椅的儿子，当她看着我坐着轮椅，又是第一次来巴黎，就主动提出带我去坐巴黎的公交车，她说即"><a href="https://www.yixi.tv/h5/speech/734/" target="_blank">[522]</a></sup>
+      </blockquote>
+<p class="text-[#A8A29E] text-sm">—— 比利时旅游局经验分享</p>
+</div>
+<!-- Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+<!-- Smart Toilet System -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E7E5E4] hover:shadow-lg transition-all duration-300" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden">
+<img alt="智慧厕所管理系统" class="w-full h-full object-cover" src="images/toilet-icon.jpg"/>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<i class="fas fa-restroom text-[#EA580C] mr-3"></i>
+<h3 class="font-serif-cn text-xl font-semibold text-[#1C1917]">智慧厕所管理系统</h3>
+</div>
+<p class="text-[#44403C] text-sm mb-4">通过物联网技术实现公厕智能化管理，提供便捷如厕体验。</p>
+<ul class="space-y-3">
+<li class="flex items-start text-sm text-[#44403C]">
+<i class="fas fa-check-circle text-[#059669] mt-1 mr-2" style="width: 16px;"></i>
+<span><strong>实时监测：</strong>精准识别有人/无人状态，通过APP查看占用情况<sup class="citation" title="智慧公厕管理系统公厕平台智慧公厕系统-陕西亿鑫鸿物联技术有限公司: * 感知层：智能终端 “神经末梢”，全域数据采集
+
+* 　　通过高精度传感器与智能终端，**7×24 小时实时采集** 公厕全维度状态，是智慧化的基础。
+
+。厕位状态：毫米波 / 激光人体感应器，精准"><a href="http://www.sxyxh-lot.com/article/2978.html" target="_blank">[106]</a></sup>。</span>
+</li>
+<li class="flex items-start text-sm text-[#44403C]">
+<i class="fas fa-check-circle text-[#059669] mt-1 mr-2" style="width: 16px;"></i>
+<span><strong>环境监控：</strong>自动监测异味、温湿度，自动启动除臭通风<sup class="citation" title="智慧公厕管理系统公厕平台智慧公厕系统-陕西亿鑫鸿物联技术有限公司: * 感知层：智能终端 “神经末梢”，全域数据采集
+
+* 　　通过高精度传感器与智能终端，**7×24 小时实时采集** 公厕全维度状态，是智慧化的基础。
+
+。厕位状态：毫米波 / 激光人体感应器，精准"><a href="http://www.sxyxh-lot.com/article/2978.html" target="_blank">[106]</a></sup>。</span>
+</li>
+<li class="flex items-start text-sm text-[#44403C]">
+<i class="fas fa-check-circle text-[#059669] mt-1 mr-2" style="width: 16px;"></i>
+<span><strong>智能运维：</strong>自动生成工单，实现保洁、设备维护的闭环管理。</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Accessibility Facilities -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E7E5E4] hover:shadow-lg transition-all duration-300" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden">
+<img alt="无障碍设施" class="w-full h-full object-cover" src="images/accessibility-ramp.jpg"/>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<i class="fas fa-wheelchair text-[#EA580C] mr-3"></i>
+<h3 class="font-serif-cn text-xl font-semibold text-[#1C1917]">无障碍服务设施体系</h3>
+</div>
+<p class="text-[#44403C] text-sm mb-4">严格遵循国家标准，确保残障人士、老年人等群体的出行便利<sup class="citation" title="广州市无障碍环境建设管理规定: （八）国家机关窗口服务单位、银行营业服务场所、旅游景区、公园、医院、大中型商场的卫生间以及室外公共厕所，应当设置无障碍出入口和无障碍厕位。
+
+。（四）国家机关、事业单位对外窗口服务场所；
+
+（五）旅游"><a href="https://www.gz.gov.cn/gkmlpt/content/7/7954/post_7954812.html" target="_blank">[43]</a></sup>。</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-[#F9F7F2] rounded-lg p-3">
+<h4 class="text-[#1C1917] font-semibold text-sm mb-2">道路通行</h4>
+<p class="text-[#44403C] text-xs">轮椅坡道、缘石坡道、连续盲道<sup class="citation" title="广州市无障碍环境建设管理规定: （八）国家机关窗口服务单位、银行营业服务场所、旅游景区、公园、医院、大中型商场的卫生间以及室外公共厕所，应当设置无障碍出入口和无障碍厕位。
+
+。（四）国家机关、事业单位对外窗口服务场所；
+
+（五）旅游"><a href="https://www.gz.gov.cn/gkmlpt/content/7/7954/post_7954812.html" target="_blank">[43]</a></sup>。</p>
+</div>
+<div class="bg-[#F9F7F2] rounded-lg p-3">
+<h4 class="text-[#1C1917] font-semibold text-sm mb-2">垂直交通</h4>
+<p class="text-[#44403C] text-xs">无障碍电梯、轮椅升降平台、盲文按钮。</p>
+</div>
+<div class="bg-[#F9F7F2] rounded-lg p-3">
+<h4 class="text-[#1C1917] font-semibold text-sm mb-2">公共服务</h4>
+<p class="text-[#44403C] text-xs">无障碍出入口、专用厕位、紧急呼叫按钮。</p>
+</div>
+<div class="bg-[#F9F7F2] rounded-lg p-3">
+<h4 class="text-[#1C1917] font-semibold text-sm mb-2">应急救助</h4>
+<p class="text-[#44403C] text-xs">4分钟应急救援圈、一键SOS报警<sup class="citation" title="千亿银发旅游市场新引擎：从15+落地案例，看AI如何颠覆行业？: * 基于AI技术研发适老化智能设备，监测银发用户旅行中的健康状况，如心率、睡眠等，并提供实时沟通和反馈功能，在有需要时为用户提供紧急服务。 
+。随着近年来各大景区老年游客数量的增加，针对老年用户最关心"><a href="https://zhuanlan.zhihu.com/p/686385788" target="_blank">[509]</a></sup>。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pet Friendly -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E7E5E4] hover:shadow-lg transition-all duration-300" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden">
+<img alt="宠物友好景区" class="w-full h-full object-cover" src="images/pet-friendly-dog.jpg"/>
+</div>
+<div class="p-6">
+<a href="https://www.pets-map.cn/" class="flex items-center mb-4">
+            <i class="fas fa-paw text-[#EA580C] mr-3"></i>
+            <h3 class="font-serif-cn text-xl font-semibold text-[#1C1917]">宠物友好景区服务</h3>
+          </a>
+<p class="text-[#44403C] text-sm mb-4">不仅是允许进入，更是系统化的配套服务，创造人与宠物和谐共处空间<sup class="citation" title="如何提升旅游景区效益？宠物友好景区成新趋势！ - 热门旅游景点 - 简书: 通过适配宠物友好的基础设施和服务体系，景区不仅能拓展用户边界，还能延长游客停留时间，提升二次消费机会。
+
+二、打造宠物友好设施：提升体验与复游率的关键
+
+。Ⅱ. 实现真正的宠物友好，不只是简单允许宠物"><a href="https://www.jianshu.com/p/fa92fcf1b8ce" target="_blank">[204]</a></sup>。</p>
+<div class="space-y-3">
+<div class="flex items-center text-sm text-[#44403C]">
+<div class="w-8 h-8 bg-[#EA580C]/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-road text-[#EA580C] text-xs"></i>
+</div>
+<span><strong>专用通道：</strong>入园专用道，避免混杂，宽度适宜并行通过。</span>
+</div>
+<div class="flex items-center text-sm text-[#44403C]">
+<div class="w-8 h-8 bg-[#EA580C]/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-shower text-[#EA580C] text-xs"></i>
+</div>
+<span><strong>便利设施：</strong>牵引绳租赁、专属饮水点、宠物便便箱、洗澡服务。</span>
+</div>
+<div class="flex items-center text-sm text-[#44403C]">
+<div class="w-8 h-8 bg-[#EA580C]/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+<i class="fas fa-store text-[#EA580C] text-xs"></i>
+</div>
+<span><strong>服务价值：</strong>游客停留时长增加1.8小时，消费额提升约35%<sup class="citation" title="如何提升旅游景区效益？宠物友好景区成新趋势！ - 热门旅游景点 - 简书: 通过适配宠物友好的基础设施和服务体系，景区不仅能拓展用户边界，还能延长游客停留时间，提升二次消费机会。
+
+二、打造宠物友好设施：提升体验与复游率的关键
+
+。Ⅱ. 实现真正的宠物友好，不只是简单允许宠物"><a href="https://www.jianshu.com/p/fa92fcf1b8ce" target="_blank">[204]</a></sup>。</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Weather Info -->
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#E7E5E4] hover:shadow-lg transition-all duration-300" style="opacity: 1 !important;">
+<div class="h-48 overflow-hidden">
+<img alt="实时天气信息" class="w-full h-full object-cover" src="images/weather-sunny.jpg"/>
+</div>
+<div class="p-6">
+<a href="https://www.weather.com.cn/" class="flex items-center mb-4">
+            <i class="fas fa-cloud-sun text-[#EA580C] mr-3"></i>
+            <h3 class="font-serif-cn text-xl font-semibold text-[#1C1917]">实时天气信息服务</h3>
+          </a>
+<p class="text-[#44403C] text-sm mb-4">集成专业天气API，为用户提供精准的出行建议和安全保障<sup class="citation" title="最佳免费天气API接口推荐 - 火山引擎开发者社区: 天气API是一种应用程序接口，允许开发者通过编程方式从气象服务提供商获取天气数据。这些数据通常包括当前天气状况、未来天气预报、历史天气数据、雷达和卫星图像等。通过发送HTTP请求，开发者可以从天气AP"><a href="https://developer.volcengine.com/articles/7389836097318027273" target="_blank">[537]</a></sup>。</p>
+<ul class="space-y-2 text-sm text-[#44403C]">
+<li class="flex items-center">
+<i class="fas fa-thermometer-half text-[#A8A29E] mr-2" style="width: 16px;"></i>
+<span>基础数据：温度、湿度、风速、能见度</span>
+</li>
+<li class="flex items-center">
+<i class="fas fa-umbrella text-[#A8A29E] mr-2" style="width: 16px;"></i>
+<span>降水数据：降水量、降水概率、降水类型</span>
+</li>
+<li class="flex items-center">
+<i class="fas fa-wind text-[#A8A29E] mr-2" style="width: 16px;"></i>
+<span>空气质量：AQI、PM2.5、污染物浓度</span>
+</li>
+<li class="flex items-center">
+<i class="fas fa-smile text-[#A8A29E] mr-2" style="width: 16px;"></i>
+<span>生活指数：穿衣、洗车、运动、旅游指数</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Health Care Section (Full Width) -->
+<div class="bg-[#1C1917] rounded-2xl p-8 md:p-10 text-white mb-10 relative overflow-hidden" style="opacity: 1 !important;">
+<div class="relative z-10">
+<div class="flex flex-col md:flex-row items-start md:items-center mb-8">
+<div class="flex items-center mb-4 md:mb-0">
+<div class="w-12 h-12 bg-[#EA580C] rounded-xl flex items-center justify-center mr-4">
+<i class="fas fa-heartbeat text-white text-xl"></i>
+</div>
+<h3 class="font-serif-cn text-2xl font-semibold text-[#FAFAF9]">健康关怀设备连接</h3>
+</div>
+<div class="md:ml-auto text-[#A8A29E] text-sm">
+<i class="fas fa-shield-alt mr-1"></i> 数据传输全程加密，保障隐私安全
+          </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h4 class="text-[#EA580C] font-semibold mb-3 flex items-center">
+<i class="fas fa-watch mr-2"></i> 多终端覆盖
+            </h4>
+<p class="text-[#D6D3D1] text-sm leading-relaxed mb-4">
+              支持智能手表（Apple Watch, 华为等）、智能手环、专业医疗设备（心电图、血压计）以及毫米波生命体征监测仪。
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-[#292524] rounded-full text-xs text-[#A8A29E]">心率监测</span>
+<span class="px-3 py-1 bg-[#292524] rounded-full text-xs text-[#A8A29E]">跌倒检测</span>
+<span class="px-3 py-1 bg-[#292524] rounded-full text-xs text-[#A8A29E]">血氧饱和度</span>
+</div>
+</div>
+<div>
+<h4 class="text-[#EA580C] font-semibold mb-3 flex items-center">
+<i class="fas fa-bell mr-2"></i> 智能预警与响应
+            </h4>
+<p class="text-[#D6D3D1] text-sm leading-relaxed mb-4">
+              当生理指标超出安全阈值（如心率异常、血氧过低）或发生跌倒时，系统自动触发严重告警<sup class="citation" title="在“体验”中感受文化: 采访人众人教育发展有限公司的过程中，记者和接受采访的品牌总监林海都不时开心大笑，林海是因为又进入了当时的情境，记者则是因为受到感染和感动。人众人的企业文化很大程度上决定于其行业特点，但他们精心营造“体"><a href="https://www.semanticscholar.org/paper/48c8ef411f19f4fa09c1cc5a402638c41a4a1d20" target="_blank">[7]</a></sup>。SOS求助系统会自动记录位置与健康状态，通知指挥中心进行快速救援。
+            </p>
+<div class="flex items-center text-sm text-[#A8A29E]">
+<i class="fas fa-history mr-2"></i>
+              银发旅游案例：扬州瘦西湖"4分钟应急救援圈"
+            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tech, Security & Value -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Tech Trends -->
+<div class="bg-white rounded-xl p-6 border border-[#E7E5E4]" style="opacity: 1 !important;">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-microchip text-[#EA580C] mr-2"></i> 技术发展趋势
+        </h4>
+<ul class="space-y-3 text-sm text-[#44403C]">
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong>AI赋能：</strong>机器学习算法提前预测健康风险。</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong>5G应用：</strong>支持实时远程医疗诊断。</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong>边缘计算：</strong>毫秒级跌倒检测响应。</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong>区块链：</strong>保障数据不可篡改。</span>
+</li>
+          <li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong>辅佐视力训练：</strong><a href="https://xcxstatic.simingtang.net/games/jingxi-shashadonghua1314-chushi/index.html" target="_blank">通过互动游戏提升视觉健康</a>。</span>
+</li>
+</ul>
+</div>
+<!-- Data Security -->
+<div class="bg-white rounded-xl p-6 border border-[#E7E5E4]" style="opacity: 1 !important;">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-lock text-[#EA580C] mr-2"></i> 数据安全与隐私
+        </h4>
+<ul class="space-y-3 text-sm text-[#44403C]">
+<li class="flex items-start">
+<i class="fas fa-user-shield text-[#059669] mt-0.5 mr-2" style="width: 16px;"></i>
+<span>用户授权与数据最小化原则。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-key text-[#059669] mt-0.5 mr-2" style="width: 16px;"></i>
+<span>TLS/SSL加密传输与存储。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-user-lock text-[#059669] mt-0.5 mr-2" style="width: 16px;"></i>
+<span>基于角色的严格访问控制。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-file-contract text-[#059669] mt-0.5 mr-2" style="width: 16px;"></i>
+<span>符合GDPR及个人信息保护法。</span>
+</li>
+</ul>
+</div>
+<!-- Service Value -->
+<div class="bg-white rounded-xl p-6 border border-[#E7E5E4]" style="opacity: 1 !important;">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-gem text-[#EA580C] mr-2"></i> 服务价值体现
+        </h4>
+<div class="space-y-4">
+<div>
+<h5 class="text-[#1C1917] font-semibold text-sm mb-1">社会价值</h5>
+<p class="text-[#A8A29E] text-xs">促进社会包容，体现文明程度，保障特殊群体权利<sup class="citation" title="无障碍设施：问题重重，亟需完善: 2014年12月3日是第22次国际残疾人日，今年的主题是“打破障碍，敞开大门，建设包容所有人的社会”。随着社会经济的发展，城市建设越来越注重人文关怀，城市无障碍设施建设日益成为衡量现代文明城市不可缺少"><a href="https://www.semanticscholar.org/paper/f4289182a2bb7dbd1761b7f6b603475af3d7d158" target="_blank">[42]</a></sup>。</p>
+</div>
+<div>
+<h5 class="text-[#1C1917] font-semibold text-sm mb-1">经济价值</h5>
+<p class="text-[#A8A29E] text-xs">拓展旅游市场，提升目的地竞争力，创造就业机会。</p>
+</div>
+<div>
+<h5 class="text-[#1C1917] font-semibold text-sm mb-1">人文价值</h5>
+<p class="text-[#A8A29E] text-xs">传递"以人为本，全民共享"的服务理念<sup class="citation" title="关于城市轨道交通车站“无障碍”设计的意见: 本文对我国快速城市轨道交通车站的“无障碍”设计提出了除考虑残疾人外应全面考虑老年人、孕妇、带有幼儿的及其他出行有某些障碍的人。“无障碍”设计应为所有弱出行者服务。日本是当今城市轨道交通“无障碍”设施方"><a href="https://www.semanticscholar.org/paper/d94fe7b7eaaee2879905dfe0fe519d8a15dbf7f7" target="_blank">[39]</a></sup><sup class="citation" title="《无障碍设施施工验收及维护规范》（GB50642—2011）的解读: 住房和城乡建设部首次发布了国家标准《无障碍设施施工验收及维护规范》（GB50642—2011），该规范共分4章7个附录，主要内容包括总则、术语、无障碍设施的施工验收、无障碍设施的维护等。该规范较好地解"><a href="https://www.semanticscholar.org/paper/bfe3d8f209ff1e1569dbafd6a16bc5814a0b91e0" target="_blank">[40]</a></sup>。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Closing Statement -->
+<div class="text-center pt-8 border-t border-[#E7E5E4]">
+<p class="font-serif-cn text-lg text-[#1C1917] leading-relaxed max-w-3xl mx-auto">
+        我们将持续优化无障碍设施，提升服务质量，让每一位旅行者都能感受到温暖、包容和尊重，让每一段旅程都成为美好的回忆。
+      </p>
+</div>
+</div>
+</section><section class="py-16 md:py-24 animation-trigger" id="section-cultural-experience" style="opacity: 1 !important; visibility: visible !important;">
+<div class="bg-white rounded-2xl p-8 md:p-12 border border-[#E7E5E4] shadow-sm" style="opacity: 1 !important;">
+<!-- Section Header -->
+<div class="flex items-center mb-10">
+<div class="w-12 h-12 bg-[#EA580C]/10 rounded-xl flex items-center justify-center mr-4">
+<i class="fas fa-vr-cardboard text-[#EA580C] text-xl"></i>
+</div>
+<div>
+<h2 class="font-serif-cn text-3xl font-semibold text-[#1C1917]">沉浸式文化体验与导览</h2>
+<p class="text-[#A8A29E] text-sm mt-1">AR/VR技术赋能深度探索，让历史触手可及</p>
+</div>
+</div>
+<!-- Introduction -->
+<div class="mb-12">
+<p class="text-[#44403C] leading-relaxed text-lg mb-6">
+        AR/VR技术在文化旅游领域正变得越来越重要，为游客提供了沉浸式的文化体验和虚拟预览功能。增强现实（AR）将数字信息与用户环境实时集成，让游客在真实地点获得增强的历史文化信息。虚拟现实（VR）则生成完全人工的环境，创造与现实世界不同的虚拟环境，让游客身临其境地感受不同的历史文化和景观体验<sup class="citation" title="Design of a Navigation App with AR And VR Features: Augmented Reality (AR) is an interactive experience of a real-world environment which is the integra"><a href="https://www.semanticscholar.org/paper/dc7582564442329042ab40a69a7c7d96ed1bdf01" target="_blank">[57]</a></sup><sup class="citation" title="Development of a mobile application with VR and AR to improve the experience of visitors in cultural settings: The implementation of technologies in visits to cultural spaces represents an important factor in th"><a href="https://www.semanticscholar.org/paper/bdc2ff5c8c9b4b1d5ae97a78f4a1447e0e3980cf" target="_blank">[62]</a></sup><sup class="citation" title="AR and VR-based travel: a responsible practice towards sustainable tourism:  Purpose Drawing on the UTAUT-2 model, the study attempts to accentuate the role of augmented realit"><a href="https://www.semanticscholar.org/paper/7e08939f38f3707846e5192578baeee494777b0e" target="_blank">[64]</a></sup><sup class="citation" title="AR/VR for Tourism &amp; Cultural Exploration | Future for Travel: ### Real-world examples
+
+Around the globe, tourism boards and cultural institutions are tapping into"><a href="https://theintellify.com/ar-vr-for-tourism-cultural-exploration/" target="_blank">[332]</a></sup>。
+      </p>
+<p class="text-[#44403C] leading-relaxed">
+        AR/VR技术能够将静态的文物和文化遗址"活"起来，让游客在现实世界中通过数字信息的叠加获得更丰富的体验。COVID-19大流行加速了数字旅游趋势，在旅行限制期间，许多人转向虚拟体验，为AR/VR创新铺平了道路<sup class="citation" title="Design of a Navigation App with AR And VR Features: Augmented Reality (AR) is an interactive experience of a real-world environment which is the integra"><a href="https://www.semanticscholar.org/paper/dc7582564442329042ab40a69a7c7d96ed1bdf01" target="_blank">[57]</a></sup><sup class="citation" title="Development of a mobile application with VR and AR to improve the experience of visitors in cultural settings: The implementation of technologies in visits to cultural spaces represents an important factor in th"><a href="https://www.semanticscholar.org/paper/bdc2ff5c8c9b4b1d5ae97a78f4a1447e0e3980cf" target="_blank">[62]</a></sup>。
+      </p>
+</div>
+<!-- AR & VR Features Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+<!-- AR Feature Card -->
+<div class="bg-[#F9F7F2] rounded-xl overflow-hidden border border-[#E7E5E4] hover:shadow-lg transition-all duration-300">
+<div class="h-48 overflow-hidden">
+<img alt="AR历史建筑复原功能演示" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-in-out" src="images/ar-historical-building.jpg"/>
+</div>
+<div class="p-6">
+<h3 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-cube text-[#EA580C] mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+            AR 增强现实导览
+          </h3>
+<ul class="space-y-3">
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">历史建筑复原：</strong>叠加三维模型，展示建筑在不同历史时期的原貌<sup class="citation" title="Development of a mobile application with VR and AR to improve the experience of visitors in cultural settings: The implementation of technologies in visits to cultural spaces represents an important factor in th"><a href="https://www.semanticscholar.org/paper/bdc2ff5c8c9b4b1d5ae97a78f4a1447e0e3980cf" target="_blank">[62]</a></sup>。</span>
+</li>
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">文化场景重现：</strong>通过AR角色和动画展示历史事件，体验"穿越"之感。</span>
+</li>
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">文物三维展示：</strong>多角度观察文物，获取详细信息和文化背景。</span>
+</li>
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">互动式体验：</strong>创建文化解谜游戏，提高参与感和学习兴趣<sup class="citation" title="Design of Museum Cultural Relics multi view virtual display system based on AR-VR fusion technology: At present, museums are facing not only rare opportunities, but also many new challenges. In order t"><a href="https://www.semanticscholar.org/paper/f0217b8ae32dc11724561b5fe6bce9dd7cc67de5" target="_blank">[65]</a></sup>。</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- VR Feature Card -->
+<div class="bg-[#F9F7F2] rounded-xl overflow-hidden border border-[#E7E5E4] hover:shadow-lg transition-all duration-300">
+<div class="h-48 overflow-hidden">
+<img alt="VR虚拟游览体验" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-in-out" src="images/vr-virtual-tour.jpg"/>
+</div>
+<div class="p-6">
+<h3 class="font-serif-cn text-xl font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-glasses text-[#EA580C] mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+            VR 虚拟现实漫游
+          </h3>
+<ul class="space-y-3">
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">远程景点漫游：</strong>360°全景技术创建虚拟景点，实现"云游"世界各地。</span>
+</li>
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">历史场景穿越：</strong>重现历史场景，体验历史事件和文化变迁。</span>
+</li>
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">文化遗产游览：</strong>虚拟游览珍贵文化遗产，让更多人接触历史。</span>
+</li>
+<li class="flex items-start text-[#44403C] text-sm leading-relaxed">
+<i class="fas fa-check text-[#059669] mt-1 mr-2" style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<span><strong class="text-[#1C1917]">沉浸式教育：</strong>创建生动的教育体验，提高文化学习效果<sup class="citation" title="Design and realization of virtual tourist landscape based on VRML_ArcGIS: Virtual tour is designed based on the virtual reality technique platform,Internet or other vehicles."><a href="https://www.semanticscholar.org/paper/1ea52fb677587338a49e24ef4270dfbf0171e569" target="_blank">[60]</a></sup><sup class="citation" title="Virtual Reality (VR) and Augmented Reality (AR) Based 360 Degree Panoramic Environment Generator for Virtual Tour: Abstract: We are entering an era of digital wonders and some of the most fascinating fields to have "><a href="https://www.semanticscholar.org/paper/98c9f338844d37120e817c81521e4f671debd2bc" target="_blank">[66]</a></sup>。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Museum Case Studies -->
+<div class="mb-12">
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917] mb-6 pb-2 border-b border-[#E7E5E4]">科技赋能文化场馆</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<a href="https://www.canalmuseum.net/" class="overflow-hidden flex flex-col md:flex-row block">
+<div class="md:w-1/2 aspect-[4/3] overflow-hidden">
+<img alt="扬州中国大运河博物馆" class="w-full h-full object-contain hover:scale-105 transition-transform duration-700" src="images/yangzhoubowuguan.jpg"/>
+</div>
+<div class="md:w-1/2 p-6 flex flex-col justify-center">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 bg-[#EA580C] rounded-full flex items-center justify-center flex-shrink-0 mr-3">
+<i class="fas fa-water text-white"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">扬州中国大运河博物馆</h4>
+</div>
+<p class="text-[#44403C] text-sm leading-relaxed">
+              运用5G+VR、投影技术等科技手段，打造"5G大运河沉浸式体验区"、"河之恋"720°环幕空间，全流域、全时段、全方位展示运河文化<sup class="citation" title="万字揭秘：文旅部20个国家级沉浸式示范案例: 最近，文化和旅游部公布了20个沉浸式文旅新业态示范案例（ 点我查看），为探索沉浸式文旅发展新趋势提供了宝贵的参考经验。
+
+作者 | 小军哥（文化产业评论作者、三川汇文旅体研究院研究员）
+
+。编审 | "><a href="https://zhuanlan.zhihu.com/p/645669381" target="_blank">[9]</a></sup>。
+            </p>
+</div>
+</a>
+<a href="https://www.sstm-sam.org.cn" class="overflow-hidden flex flex-col md:flex-row block">
+<div class="md:w-1/2 aspect-[4/3] overflow-hidden">
+<img alt="上海天文馆" class="w-full h-full object-contain hover:scale-105 transition-transform duration-700" src="images/tianwenguan.jpg"/>
+</div>
+<div class="md:w-1/2 p-6 flex flex-col justify-center">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 bg-[#EA580C] rounded-full flex items-center justify-center flex-shrink-0 mr-3">
+<i class="fas fa-satellite text-white"></i>
+</div>
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917]">上海天文馆</h4>
+</div>
+<p class="text-[#44403C] text-sm leading-relaxed">
+              运用体感互动、增强现实、虚拟现实等数智化展示手段，使原本深奥抽象的天文科学变得生动形象，让青少年在有趣的互动中燃起探索宇宙的梦想<sup class="citation" title="万字揭秘：文旅部20个国家级沉浸式示范案例: 最近，文化和旅游部公布了20个沉浸式文旅新业态示范案例（ 点我查看），为探索沉浸式文旅发展新趋势提供了宝贵的参考经验。
+
+作者 | 小军哥（文化产业评论作者、三川汇文旅体研究院研究员）
+
+。编审 | "><a href="https://zhuanlan.zhihu.com/p/645669381" target="_blank">[9]</a></sup>。
+            </p>
+</div>
+</a>
+</div>
+</div>
+<!-- Popular Landmarks -->
+<div class="mb-12">
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917] mb-6 pb-2 border-b border-[#E7E5E4]">热门文化地标打卡</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<a href="https://www.dpm.org.cn/vr/index.html" class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 block">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img alt="故宫博物院" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="images/forbidden-city.jpg"/>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h4 class="font-serif-cn text-xl font-semibold text-white mb-1">故宫博物院</h4>
+            <p class="text-[#D6D3D1] text-sm">明清皇家宫殿，木质结构古建筑瑰宝</p>
+          </div>
+        </a>
+<a href="https://www.bmy.com.cn/index.html" class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 block">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img alt="秦始皇兵马俑" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="images/terracotta-warriors.jpg"/>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h4 class="font-serif-cn text-xl font-semibold text-white mb-1">秦始皇兵马俑</h4>
+            <p class="text-[#D6D3D1] text-sm">世界第八大奇迹，古代雕塑艺术宝库</p>
+          </div>
+        </a>
+<a href="https://www.720yun.com/t/89aknedhgdb" class="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 block">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img alt="苏州园林" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="images/suzhou-garden.jpg"/>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h4 class="font-serif-cn text-xl font-semibold text-white mb-1">苏州园林</h4>
+            <p class="text-[#D6D3D1] text-sm">中国古典园林代表，园林艺术精髓</p>
+          </div>
+        </a>
+</div>
+</div>
+<!-- Immersive Performances -->
+<div>
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917] mb-6 pb-2 border-b border-[#E7E5E4]">沉浸式演艺创新</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<a href="https://www.damai.cn/" class="overflow-hidden flex flex-col md:flex-row block">
+<div class="md:w-1/2 aspect-[4/3] overflow-hidden">
+<img alt="又见平遥沉浸式演艺" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="images/seeing-pingyao.jpg"/>
+</div>
+<div class="md:w-1/2 p-6 flex flex-col justify-center">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-3">《又见平遥》</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">
+              全国沉浸式演艺标杆项目，以"行走式"观演模式、"带入感"的情境体验，让观众分不清是在戏中还是戏外，将山西的根文化、大院文化、面食文化全面贯穿于剧中<sup class="citation" title="中国顶级10大沉浸式文旅标杆项目案例解读-数艺网: 近年来，沉浸式文旅街区已经成为城市旅游发展的新亮点，越来越多的城市将其作为发展旅游业的重点，期望通过打造成功出圈的街区项目，建立起城市沉浸式文旅新地标、新名片，实现了“一街兴一城”的目标。
+
+。**沉"><a href="https://www.d-arts.cn/article/article_info/key/MTIxMDMyNjY1NTGEqZutsXbOcw.html" target="_blank">[3]</a></sup><sup class="citation" title="万字揭秘：文旅部20个国家级沉浸式示范案例: 最近，文化和旅游部公布了20个沉浸式文旅新业态示范案例（ 点我查看），为探索沉浸式文旅发展新趋势提供了宝贵的参考经验。
+
+作者 | 小军哥（文化产业评论作者、三川汇文旅体研究院研究员）
+
+。编审 | "><a href="https://zhuanlan.zhihu.com/p/645669381" target="_blank">[9]</a></sup>。
+            </p>
+</div>
+</a>
+<a href="https://www.xiaohongshu.com/search_result" class="overflow-hidden flex flex-col md:flex-row block">
+<div class="md:w-1/2 aspect-[4/3] overflow-hidden">
+<img alt="西安大唐不夜城" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="images/tang-paradise.jpg"/>
+</div>
+<div class="md:w-1/2 p-6 flex flex-col justify-center">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-3">西安大唐不夜城</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">
+              全国首个沉浸式唐风市井生活街区，以盛唐文化为原点，将"唐文化"融入商业、休闲、娱乐等文旅消费场景之中，身临其境仿佛穿越到了千年前的繁华似锦的长安大街<sup class="citation" title="万字揭秘：文旅部20个国家级沉浸式示范案例: 最近，文化和旅游部公布了20个沉浸式文旅新业态示范案例（ 点我查看），为探索沉浸式文旅发展新趋势提供了宝贵的参考经验。
+
+作者 | 小军哥（文化产业评论作者、三川汇文旅体研究院研究员）
+
+。编审 | "><a href="https://zhuanlan.zhihu.com/p/645669381" target="_blank">[9]</a></sup>。
+            </p>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section><section class="py-16 md:py-24 bg-[#F9F7F2]" id="section-community" style="opacity: 1 !important; visibility: visible !important;">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center mb-16">
+<span class="inline-block py-1 px-3 rounded-full bg-[#EA580C]/10 text-[#EA580C] text-sm font-medium mb-4">社区生态</span>
+<h2 class="font-serif-cn text-3xl md:text-5xl font-semibold text-[#1C1917] mb-4">社区协作与动态行程</h2>
+<div class="w-24 h-1 bg-[#EA580C] mx-auto rounded-full"></div>
+<p class="text-[#44403C] mt-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        连接旅行者，共享美好体验
+      </p>
+</div>
+<!-- Core Philosophy & Intro -->
+<div class="bg-white rounded-2xl p-8 md:p-12 border border-[#E7E5E4] shadow-sm mb-12" style="opacity: 1 !important;">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div>
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917] mb-6">核心理念：共建共享的旅行生态</h3>
+<p class="text-[#44403C] leading-relaxed mb-6">
+            在当今旅行生态中，社区协作已成为提升旅行体验的关键因素。研究表明，在线旅游社区成员的互动性、信任和流体验之间存在紧密关系——互动性是成员在在线旅游社区中拥有流体验的关键因素，而流体验可以增强成员在在线旅游社区中的交易意图<sup class="citation" title="Towards understanding members&#x27; interactivity, trust, and flow in online travel community: Purpose – This study targeted members of online travel communities to explore the factors that affec"><a href="https://www.semanticscholar.org/paper/2b7b3e32a1358ffb49c281a2242c532d9e7b1ec9" target="_blank">[240]</a></sup>。
+          </p>
+<p class="text-[#44403C] leading-relaxed">
+            归途平台通过构建活跃的旅行社区，让每一位旅行者都能找到志同道合的伙伴，分享真实的旅行体验，动态优化旅行计划。
+          </p>
+</div>
+<div class="relative">
+<img alt="旅行社区团队合影，展示多人旅行的欢乐氛围和社交属性" class="rounded-xl shadow-lg w-full h-auto object-cover" src="images/community-group.jpg"/>
+</div>
+</div>
+</div>
+<!-- Feature 1 & 2: UGC Tools & Travel Buddy -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+<!-- UGC Itinerary Tools -->
+<div class="bg-white rounded-2xl p-8 border border-[#E7E5E4] shadow-sm hover:shadow-lg transition-all duration-300" style="opacity: 1 !important;">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 bg-[#EA580C]/10 rounded-xl flex items-center justify-center mr-4">
+<i class="fas fa-map-marked-alt text-[#EA580C] text-xl"></i>
+</div>
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917]">UGC行程调整工具</h3>
+</div>
+<div class="mb-6">
+<img alt="团体旅行规划工具界面，展示协作编辑、预算管理和行程组织功能" class="rounded-lg w-full h-48 object-cover mb-4 border border-[#E7E5E4]" src="images/itinerary-collaboration.jpg"/>
+</div>
+<div class="space-y-4">
+<div class="flex items-start">
+<i class="fas fa-eye text-[#EA580C] mt-1 mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<div>
+<h4 class="font-semibold text-[#1C1917] text-lg mb-1">可视化看板界面</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">提供日历看板、交互式地图与时间轴视图，支持拖拽调整，让复杂行程一目了然<sup class="citation" title="The Ultimate Drag-and-Drop Itinerary Planner - Holicay: # Itinerary Planner
+
+## Itinerary Planner
+
+Itinerary Planner
+
+。# The Ultimate Drag-and-Drop Itinerar"><a href="https://www.holicay.com/product/itinerary-planner" target="_blank">[214]</a></sup>。</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-magic text-[#EA580C] mt-1 mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<div>
+<h4 class="font-semibold text-[#1C1917] text-lg mb-1">拖拽功能与智能优化</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">智能路线优化减少通勤时间，实时协作编辑让团队规划像整理积木一样简单<sup class="citation" title="Wanderlog - Travel Planner - App Store - Apple: ## Wanderlog is a free travel app (with an optional Pro subscription) for planning every kind of tri"><a href="https://apps.apple.com/us/app/wanderlog-travel-planner/id1476732439" target="_blank">[205]</a></sup><sup class="citation" title="The Ultimate Drag-and-Drop Itinerary Planner - Holicay: # Itinerary Planner
+
+## Itinerary Planner
+
+Itinerary Planner
+
+。# The Ultimate Drag-and-Drop Itinerar"><a href="https://www.holicay.com/product/itinerary-planner" target="_blank">[214]</a></sup>。</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-users-cog text-[#EA580C] mt-1 mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<div>
+<h4 class="font-semibold text-[#1C1917] text-lg mb-1">多人协作机制</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">支持投票、评论讨论和版本控制，自动检测时间冲突，确保团队协作顺畅高效。</p>
+</div>
+</div>
+</div>
+<!-- Case Study Box -->
+<div class="mt-6 bg-[#F9F7F2] rounded-xl p-4 border border-[#E7E5E4]">
+<h4 class="font-serif-cn text-sm font-semibold text-[#EA580C] mb-2"><i class="fas fa-lightbulb mr-1"></i>实践案例</h4>
+<p class="text-[#44403C] text-xs leading-relaxed">
+            8位好友计划10天欧洲三国之旅，通过归途平台实现实时协作、投票共识、智能优化路线减少30%通勤时间，最终生成全员满意的完美行程。
+          </p>
+</div>
+</div>
+<!-- Travel Buddy Matching -->
+<div class="bg-white rounded-2xl p-8 border border-[#E7E5E4] shadow-sm hover:shadow-lg transition-all duration-300" style="opacity: 1 !important;">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 bg-[#EA580C]/10 rounded-xl flex items-center justify-center mr-4">
+<i class="fas fa-user-friends text-[#EA580C] text-xl"></i>
+</div>
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917]">旅游搭子匹配</h3>
+</div>
+<div class="mb-6">
+<img alt="旅行搭子在雪山登顶合影，象征旅行伙伴的共同探索和友谊" class="rounded-lg w-full h-48 object-cover mb-4 border border-[#E7E5E4]" src="images/travel-buddy.jpg"/>
+</div>
+<div class="space-y-4">
+<div class="flex items-start">
+<i class="fas fa-id-card text-[#EA580C] mt-1 mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<div>
+<h4 class="font-semibold text-[#1C1917] text-lg mb-1">完善用户画像</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">包含旅行理念、风格偏好、兴趣标签、旅行历史及双向评价体系<sup class="citation" title="Case study: an app that helps you find your adventure buddy with ...: Everyone can introduce themselves and plan to meet physically or virtually to discuss the trip detai"><a href="https://medium.com/design-bootcamp/scout-find-partners-to-travel-with-a-ui-ux-case-study-e17ef5523a63" target="_blank">[261]</a></sup>。</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-brain text-[#EA580C] mt-1 mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center: center;"></i>
+<div>
+<h4 class="font-semibold text-[#1C1917] text-lg mb-1">AI智能匹配算法</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">基于旅行风格、预算、兴趣、时间等维度多维度计算匹配度，精准推荐最佳伙伴<sup class="citation" title="Local travel partner matching app - Vladimir Serjanin: # Local travel partner matching app
+
+
+* Oct 26, 2023 
+* 6 min read 
+Updated: May 6, 2025
+
+。## Clee i"><a href="https://www.serjanin.com/post/local-travel-partner-matching-app" target="_blank">[265]</a></sup>。</p>
+</div>
+</div>
+<div class="flex items-start">
+<i class="fas fa-shield-alt text-[#EA580C] mt-1 mr-3" style="width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;"></i>
+<div>
+<h4 class="font-semibold text-[#1C1917] text-lg mb-1">安全与信任设计</h4>
+<p class="text-[#44403C] text-sm leading-relaxed">提供身份验证、免费取消机制、透明成本分解及危险信号提示，保障出行安全<sup class="citation" title="Case study: an app that helps you find your adventure buddy with ...: Everyone can introduce themselves and plan to meet physically or virtually to discuss the trip detai"><a href="https://medium.com/design-bootcamp/scout-find-partners-to-travel-with-a-ui-ux-case-study-e17ef5523a63" target="_blank">[261]</a></sup><sup class="citation" title="Flight Booking &amp; Travel Buddy App: A UX Design Solution - LinkedIn: I’m excited to share my latest project – a Flight Booking &amp; Travel Buddy App ✈️🧑🤝🧑 This concept was "><a href="https://www.linkedin.com/posts/chandru-shyam_tripigo-flight-booking-app-ui-ux-chandru-activity-7351592766751113217-kaqq" target="_blank">[268]</a></sup>。</p>
+</div>
+</div>
+</div>
+<div class="mt-6 bg-[#F9F7F2] rounded-xl p-4 border border-[#E7E5E4]">
+<h4 class="font-serif-cn text-sm font-semibold text-[#EA580C] mb-2"><i class="fas fa-mobile-alt mr-1"></i>交互体验</h4>
+<p class="text-[#44403C] text-xs leading-relaxed">
+             类似Tinder的滑动匹配界面，支持即时消息和群组聊天，让找旅伴变得高效且有趣<sup class="citation" title="Local travel partner matching app - Vladimir Serjanin: # Local travel partner matching app
+
+
+* Oct 26, 2023 
+* 6 min read 
+Updated: May 6, 2025
+
+。## Clee i"><a href="https://www.serjanin.com/post/local-travel-partner-matching-app" target="_blank">[265]</a></sup>。
+           </p>
+</div>
+</div>
+</div>
+<!-- Feature 3: Reviews & Avoid Pitfalls -->
+<div class="bg-white rounded-2xl p-8 md:p-10 border border-[#E7E5E4] shadow-sm mb-8" style="opacity: 1 !important;">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="md:w-1/3">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 bg-[#EA580C]/10 rounded-xl flex items-center justify-center mr-4">
+<i class="fas fa-star-half-alt text-[#EA580C] text-xl"></i>
+</div>
+<h3 class="font-serif-cn text-2xl font-semibold text-[#1C1917]">实时评价与避雷</h3>
+</div>
+<p class="text-[#44403C] leading-relaxed mb-6">
+            聚合Google、Tripadvisor、小红书等主流平台数据，通过AI情感分析生成摘要，提供全方位的决策参考和避雷指南<sup class="citation" title="Best Review Widgets for 2026: Boost SEO &amp; Conversions - Shapo: * Aggregates and monitors reviews from 150+ industry and local sites. 
+* Centralized inbox, auto‑res"><a href="https://shapo.io/blog/best-review-widget/" target="_blank">[226]</a></sup><sup class="citation" title="Google Reviews Widget for Your Website - EmbedSocial: Get aggregated star ratings for your product’s Google search results.
+
+。Embed one line, simple schem"><a href="https://embedsocial.com/google-reviews-widget/" target="_blank">[228]</a></sup>。
+          </p>
+<div class="space-y-3">
+<div class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-check-circle text-[#059669] mr-2"></i> 多平台评价聚合
+            </div>
+<div class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-check-circle text-[#059669] mr-2"></i> AI智能情感分析
+            </div>
+<div class="flex items-center text-sm text-[#44403C]">
+<i class="fas fa-check-circle text-[#059669] mr-2"></i> 避雷视觉标识
+            </div>
+</div>
+</div>
+<div class="md:w-2/3">
+<img alt="评论聚合器工作流程图，展示多平台评价收集、分析和展示机制" class="rounded-lg w-full h-full object-cover min-h-[250px] border border-[#E7E5E4]" src="images/reviews-aggregation.jpg"/>
+</div>
+</div>
+<!-- Review Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-[#E7E5E4]">
+<div class="text-center">
+<div class="w-16 h-16 bg-[#F9F7F2] rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-robot text-[#1C1917] text-2xl"></i>
+</div>
+<h4 class="font-semibold text-[#1C1917] mb-2">智能审核</h4>
+<p class="text-[#A8A29E] text-sm">AI驱动审核，自动过滤不相关内容，支持手动批准和敏感度调整<sup class="citation" title="Best Social Media Feed Widget for Websites - Taggbox: Industry-Leading
+
+# Social Media Widget for Websites
+
+。Embed a free social media widget to display l"><a href="https://taggbox.com/social-media-widget/" target="_blank">[220]</a></sup>。</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-[#F9F7F2] rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-exclamation-triangle text-[#D97706] text-2xl"></i>
+</div>
+<h4 class="font-semibold text-[#1C1917] mb-2">避雷指南</h4>
+<p class="text-[#A8A29E] text-sm">视觉化风险等级标识，提供负面评价摘要和基于反馈的避雷建议。</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-[#F9F7F2] rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-sync-alt text-[#EA580C] text-2xl"></i>
+</div>
+<h4 class="font-semibold text-[#1C1917] mb-2">实时同步</h4>
+<p class="text-[#A8A29E] text-sm">自动同步全网评价更新，内置分析过滤器，展示最有价值的反馈<sup class="citation" title="Best Review Widgets for 2026: Boost SEO &amp; Conversions - Shapo: * Aggregates and monitors reviews from 150+ industry and local sites. 
+* Centralized inbox, auto‑res"><a href="https://shapo.io/blog/best-review-widget/" target="_blank">[226]</a></sup>。</p>
+</div>
+</div>
+</div>
+<!-- Feature 4: Community Interaction -->
+<div class="bg-[#1C1917] rounded-2xl p-8 md:p-10 text-[#FAFAF9] shadow-lg mb-12" style="opacity: 1 !important;">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+<div>
+<div class="flex items-center mb-2">
+<i class="fas fa-bolt text-[#EA580C] mr-3 text-xl"></i>
+<h3 class="font-serif-cn text-2xl md:text-3xl font-semibold text-[#FAFAF9]">社区互动与动态更新</h3>
+</div>
+<p class="text-[#A8A29E]">实时连接，共享旅途每一刻</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h4 class="font-semibold text-[#FAFAF9] text-lg mb-4 border-b border-[#292524] pb-2">动态流界面设计</h4>
+<ul class="space-y-3 text-[#D6D3D1]">
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong class="text-[#FAFAF9]">时间轴视图：</strong>按时间顺序显示活动更新，记录旅行足迹。</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong class="text-[#FAFAF9]">卡片式布局：</strong>内容丰富，支持无限滚动，浏览体验流畅。</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong class="text-[#FAFAF9]">智能筛选：</strong>按类型、时间、相关性快速定位感兴趣的内容。</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-[#FAFAF9] text-lg mb-4 border-b border-[#292524] pb-2">实时通信技术</h4>
+<ul class="space-y-3 text-[#D6D3D1]">
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong class="text-[#FAFAF9]">WebSocket/SSE：</strong>实现聊天、状态更新的实时双向通信。</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong class="text-[#FAFAF9]">WebRTC：</strong>支持点对点视频聊天，拉近旅伴距离。</span>
+</li>
+<li class="flex items-start">
+<span class="text-[#EA580C] mr-2">•</span>
+<span><strong class="text-[#FAFAF9]">离线支持：</strong>支持离线编辑，网络恢复后自动同步。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Design, Privacy & Future -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- UX Best Practices -->
+<div class="bg-white rounded-xl p-6 border border-[#E7E5E4] shadow-sm" style="opacity: 1 !important;">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-palette text-[#EA580C] mr-2"></i> 设计最佳实践
+        </h4>
+<ul class="space-y-2 text-sm text-[#44403C]">
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>信任建立：</strong>显示真实用户内容和验证徽章<sup class="citation" title="Embed Free Social Media Reviews Template on Your Website: # Social Media Reviews template for website
+
+
+。* Easy Business Search and Review Display 
+* Review M"><a href="https://elfsight.com/all-in-one-reviews-widget/templates/social-media-reviews/" target="_blank">[218]</a></sup>。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>移动优先：</strong>确保在所有设备上表现优异<sup class="citation" title="Best Review Widgets for 2026: Boost SEO &amp; Conversions - Shapo: * Aggregates and monitors reviews from 150+ industry and local sites. 
+* Centralized inbox, auto‑res"><a href="https://shapo.io/blog/best-review-widget/" target="_blank">[226]</a></sup>。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>品牌一致性：</strong>支持定制颜色、字体和布局。</span>
+</li>
+</ul>
+</div>
+<!-- Privacy & Security -->
+<div class="bg-white rounded-xl p-6 border border-[#E7E5E4] shadow-sm" style="opacity: 1 !important;">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-lock text-[#EA580C] mr-2"></i> 隐私与安全
+        </h4>
+<ul class="space-y-2 text-sm text-[#44403C]">
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>数据保护：</strong>传输存储加密，严格遵守GDPR法规。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>内容审核：</strong>AI+人工双重审核，建立社区规范。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>无障碍设计：</strong>支持键盘导航、屏幕阅读器，高对比度显示。</span>
+</li>
+</ul>
+</div>
+<!-- Future Directions -->
+<div class="bg-white rounded-xl p-6 border border-[#E7E5E4] shadow-sm" style="opacity: 1 !important;">
+<h4 class="font-serif-cn text-lg font-semibold text-[#1C1917] mb-4 flex items-center">
+<i class="fas fa-rocket text-[#EA580C] mr-2"></i> 未来发展
+        </h4>
+<ul class="space-y-2 text-sm text-[#44403C]">
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>AI增强：</strong>更智能的个性化推荐和内容创作助手。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>AR/VR集成：</strong>沉浸式预览旅行目的地。</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check text-[#059669] mt-1 mr-2 text-xs"></i>
+<span><strong>DAO治理：</strong>去中心化社区治理与代币激励。</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Closing Statement -->
+<div class="mt-12 text-center">
+<p class="text-[#44403C] italic font-serif-cn text-lg">
+        "在这里，每一位旅行者都能找到志同道合的伙伴，分享真实的体验，获得有价值的建议，共同创造难忘的旅行记忆。"
+      </p>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+<!-- 底部信息区 -->
+<footer class="bg-[#1C1917] text-[#FAFAF9] mt-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<!-- 品牌信息 -->
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 bg-[#EA580C] rounded-full flex items-center justify-center">
+<i class="fas fa-compass text-white text-lg"></i>
+</div>
+<span class="font-serif-en text-2xl font-semibold">归途</span>
+</div>
+<p class="text-[#A8A29E] leading-relaxed mb-6 max-w-md">
+            每一段旅程，都是一次灵魂的归途。我们致力于为您打造有温度、有深度的旅行体验，让每一次出发都充满意义。
+          </p>
+<div class="flex space-x-4">
+<a class="w-10 h-10 bg-[#292524] hover:bg-[#EA580C] rounded-full flex items-center justify-center transition-colors duration-300" href="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=wechat:example" target="_blank">
+<i class="fab fa-weixin"></i>
+</a>
+<a class="w-10 h-10 bg-[#292524] hover:bg-[#EA580C] rounded-full flex items-center justify-center transition-colors duration-300" href="#">
+<i class="fab fa-weibo"></i>
+</a>
+<a class="w-10 h-10 bg-[#292524] hover:bg-[#EA580C] rounded-full flex items-center justify-center transition-colors duration-300" href="#">
+<i class="fab fa-instagram"></i>
+</a>
+</div>
+</div>
+<!-- 快速链接 -->
+<div>
+<h3 class="font-serif-cn text-lg font-semibold mb-6">快速链接</h3>
+<ul class="space-y-3">
+<li><a class="text-[#A8A29E] hover:text-[#EA580C] transition-colors" href="#section-intelligent-planning">智能规划</a></li>
+<li><a class="text-[#A8A29E] hover:text-[#EA580C] transition-colors" href="#section-resource-booking">资源预订</a></li>
+<li><a class="text-[#A8A29E] hover:text-[#EA580C] transition-colors" href="#section-data-insights">数据洞察</a></li>
+<li><a class="text-[#A8A29E] hover:text-[#EA580C] transition-colors" href="#section-accessibility">无障碍服务</a></li>
+</ul>
+</div>
+<!-- 联系信息 -->
+<div>
+<h3 class="font-serif-cn text-lg font-semibold mb-6">联系我们</h3>
+<ul class="space-y-3 text-[#A8A29E]">
+<li class="flex items-start">
+<i class="fas fa-map-marker-alt mr-3 text-[#EA580C] mt-1"></i>
+<span>23人工智能1班</span>
+</li>
+<li class="flex items-center">
+<i class="fas fa-phone mr-3 text-[#EA580C]"></i>
+15821721942
+</li>
+<li class="flex items-center">
+<i class="fas fa-user mr-3 text-[#EA580C]"></i>
+陆舒贤
+</li>
+</ul>
+</div>
+</div>
+<!-- 分割线 -->
+<div class="border-t border-[#292524] mt-12 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-[#78716C] text-sm">
+            © 2026 归途. 保留所有权利.
+          </p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="text-[#78716C] hover:text-[#FAFAF9] text-sm transition-colors" href="#">隐私政策</a>
+<a class="text-[#78716C] hover:text-[#FAFAF9] text-sm transition-colors" href="#">服务条款</a>
+<a class="text-[#78716C] hover:text-[#FAFAF9] text-sm transition-colors" href="#">无障碍声明</a>
+
+    <div id="jump_to_index" class="flex flex-col items-center m-7">
+        <a href="https://xcxstatic.simingtang.net/games/ciji-zuiqiangfeidaoshou/index.html" target="_blank" class="text-center text-gray-400 underline">
+            小彩蛋
+        </a>
+    </div></div>
+</div>
+</div>
+</div>
+</footer>
+<!-- JavaScript -->
+<script src="./js/main.js"></script>
+</body>
+</html>
